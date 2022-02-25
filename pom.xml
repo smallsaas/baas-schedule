@@ -11,7 +11,8 @@
 
 	<modules>
 		<module>schedule-job-admin</module>
-    </modules>
+		<module>schedule-use-admin</module>
+	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
