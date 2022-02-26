@@ -1,6 +1,6 @@
 package com.jfeat.use.admin.services.domain.service.impl;
-import com.jfeat.module.use.admin.services.domain.service.ScheduleJobRecordService;
-import com.jfeat.module.use.admin.services.gen.crud.service.impl.CRUDScheduleJobRecordServiceImpl;
+import com.jfeat.use.admin.services.domain.service.ScheduleJobRecordService;
+import com.jfeat.use.admin.services.gen.crud.service.impl.CRUDScheduleJobRecordServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

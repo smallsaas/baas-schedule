@@ -41,6 +41,7 @@ public class ScheduleJobRecord extends Model<ScheduleJobRecord> {
      * 时间设置
      */
       private String cron;
+      private Integer deleteFlag;
 
     
     public Long getId() {
@@ -88,7 +89,16 @@ public class ScheduleJobRecord extends Model<ScheduleJobRecord> {
           return this;
       }
 
-      public static final String ID = "id";
+    public Integer getDeleteFlag() {
+        return deleteFlag;
+    }
+
+    public ScheduleJobRecord setDeleteFlag(Integer deleteFlag) {
+        this.deleteFlag = deleteFlag;
+        return this;
+    }
+
+    public static final String ID = "id";
 
       public static final String JOB_NAME = "job_name";
 
@@ -98,6 +108,8 @@ public class ScheduleJobRecord extends Model<ScheduleJobRecord> {
 
       public static final String CRON = "cron";
 
+      public static final String DELETE_FLAG = "delete_flag";
+
       @Override
     protected Serializable pkVal() {
           return this.id;
@@ -106,11 +118,12 @@ public class ScheduleJobRecord extends Model<ScheduleJobRecord> {
     @Override
     public String toString() {
         return "ScheduleJobRecord{" +
-              "id=" + id +
-                  ", jobName=" + jobName +
-                  ", jobGroupName=" + jobGroupName +
-                  ", jobClass=" + jobClass +
-                  ", cron=" + cron +
-              "}";
+                "id=" + id +
+                ", jobName='" + jobName + '\'' +
+                ", jobGroupName='" + jobGroupName + '\'' +
+                ", jobClass='" + jobClass + '\'' +
+                ", cron='" + cron + '\'' +
+                ", deleteFlag=" + deleteFlag +
+                '}';
     }
 }

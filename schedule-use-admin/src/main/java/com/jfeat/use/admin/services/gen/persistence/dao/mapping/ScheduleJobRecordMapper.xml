@@ -9,11 +9,12 @@
         <result column="job_group_name" property="jobGroupName" />
         <result column="job_class" property="jobClass" />
         <result column="cron" property="cron" />
+        <result column="delete_flag" property="deleteFlag" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, job_name, job_group_name, job_class, cron
+        id, job_name, job_group_name, job_class, cron,delete_flag
     </sql>
 
 </mapper>
