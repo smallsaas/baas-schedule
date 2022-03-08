@@ -30,35 +30,11 @@
 
     <dependencies>
 
-        <!-- starter-web：spring-webmvc + autoconfigure + logback + yaml + tomcat -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!-- starter-test：junit + spring-test + mockito -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- freemarker-starter -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>
-
-        <!-- mail-starter -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
-        </dependency>
-
-        <!-- starter-actuator -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+<!--        &lt;!&ndash; starter-web：spring-webmvc + autoconfigure + logback + yaml + tomcat &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-web</artifactId>-->
+<!--        </dependency>-->
 
         <!-- mybatis-starter：mybatis + mybatis-spring + hikari（default） -->
         <dependency>
@@ -72,13 +48,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql-connector-java.version}</version>
         </dependency>
-
-        <!-- xxl-job-core -->
-        <dependency>
-            <groupId>com.xuxueli</groupId>
-            <artifactId>xxl-job-core</artifactId>
-            <version>2.3.0</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus -->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -89,6 +58,11 @@
             <groupId>com.jfeat</groupId>
             <artifactId>crud-plus</artifactId>
             <version>0.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
         </dependency>
 
 

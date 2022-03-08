@@ -6,6 +6,7 @@ package com.jfeat.use.admin.services.gen.crud.model;
 
 import com.jfeat.use.admin.services.gen.persistence.model.ScheduleJobRecord;
 
+
 /**
  * Created by Code generator on 2022-02-25
  *  * slaves.size() : 0

@@ -5,5 +5,5 @@ import com.jfeat.use.admin.services.gen.crud.service.CRUDScheduleJobRecordServic
 /**
  * Created by vincent on 2017/10/19.
  */
-public interface ScheduleJobRecordService extends CRUDScheduleJobRecordService{
+public interface ScheduleJobRecordService extends CRUDScheduleJobRecordService {
     }

@@ -5,6 +5,6 @@ import com.jfeat.use.admin.services.gen.persistence.model.ScheduleJobRecord;
 /**
  * Created by Code generator on 2022-02-25
  */
-public class ScheduleJobRecordRecord extends ScheduleJobRecord{
+public class ScheduleJobRecordRecord extends ScheduleJobRecord {
     
     }

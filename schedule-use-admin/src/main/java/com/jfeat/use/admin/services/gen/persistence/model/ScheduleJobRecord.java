@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
 /**
@@ -14,6 +17,8 @@ import java.io.Serializable;
  * @author Code generator
  * @since 2022-02-25
  */
+@AllArgsConstructor
+@NoArgsConstructor
 @TableName("t_schedule_job_record")
 public class ScheduleJobRecord extends Model<ScheduleJobRecord> {
 
