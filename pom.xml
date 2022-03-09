@@ -11,7 +11,7 @@
 
 	<modules>
 		<module>schedule-job-admin</module>
-		<module>schedule-use-admin</module>
+		<module>schedule-useJob-admin</module>
 	</modules>
 
 	<properties>
