@@ -1,18 +1,16 @@
-package com.jfeat.use.admin;
+package com.jfeat;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-
-@ComponentScan(basePackages = {"com.jfeat.use.admin.services.domain.dao"})
-//@EnableAutoConfiguration
+@Slf4j
 @SpringBootApplication
+@EnableScheduling
 public class AmApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(AmApplication.class, args);
+        log.info("Application run success!");
     }
 }
