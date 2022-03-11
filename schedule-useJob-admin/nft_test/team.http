@@ -1,0 +1,92 @@
+@local = http://localhost:8089
+
+@test = http://localhost:8080
+
+@player2 = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6MTEzLCJhY2NvdW50IjoiYWNjNjExMjQ4MzciLCJkb21haW5Vc2VySWQiOjU4LCJpYXQiOjE2NDEyNjI1NzYsImp0aSI6IjExMyIsInN1YiI6ImFjYzYxMTI0ODM3IiwiZXhwIjoxNjQxNTIxNzc2fQ.DD6r3q7KCH5gO0gs4NYPniUEcHlmMa3hemDXz0z337Hek9LXm3EAae0lbIFGhfwB1POtT1Z-j8crZS_nPbh-eg
+
+@admin =Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDEyNjExNjEsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0MTUyMDM2MX0.lOiZJxei0raYauojfPSvz4-b0QX37ywNM_8XR8-KTL1OeWuvTNXomyXB8kI6Nb2QP02N-2VGBIrhYbeX3X6utA
+###我的团队 查询返回邀请人名字，邀请人手机号还有团队总人数
+GET {{local}}/api/crud/team/users/1/team
+Content-Type: application/json
+
+###查询子用户
+GET {{test}}/api/crud/team/users/getChildrenByUserId/1
+Authorization: {{admin}}
+
+### 测试查询用户
+GET {{test}}/api/crud/oms/player/players
+Authorization: {{admin}}
+
+###测试查询特定用户
+GET {{test}}/api/crud/oms/player/players/58
+Authorization: {{admin}}
+
+###13527683434用户登录
+POST {{test}}/api/app/oauth/player/login
+
+{
+    "account" : "13527683482",
+    "password" : "123456"
+}
+
+###
+POST {{test}}/api/crud/oms/player/players
+Authorization: {{player2}}
+
+{
+"name":"暗黑龙-LEVEL1",
+"invitationCode":"40jj6k",
+"mobilePhone":18664521001,
+"firstMobilePhoneCode":1,
+"backupMobilePhone":18664521001,
+"secondMobilePhoneCode":1,
+"paymentPassword":"1",
+"checkPaymentPassword":"1",
+"loginPassword":"1",
+"checkLoginPassword":"1",
+"isManager":1,"alipayAccount":"1",
+"wechatAccount":"1",
+"bankAccountName":"1",
+"bankAccountNumber":1
+}
+
+###测试player
+GET {{test}}/api/u/player
+Authorization: {{player2}}
+
+###新建player
+POST {{test}}/api/crud/oms/player/players
+Authorization: {{admin}}
+
+{"sysUserId":"876708082437197888",
+ "name":"测试",
+ "invitationCode":"40jj6k",
+ "mobilePhone":18664521478,
+ "firstMobilePhoneCode":1,
+ "backupMobilePhone":18664521568,
+ "secondMobilePhoneCode":1,
+ "paymentPassword":"1",
+ "checkPaymentPassword":"1",
+ "loginPassword":"1",
+ "checkLoginPassword":"1",
+ "isManager":1,"alipayAccount":"1",
+ "wechatAccount":"1",
+ "bankAccountName":"1",
+ "bankAccountNumber":1
+ }
+
+
+
+###添加精灵
+POST {{test}}/api/crud/oms/wisp/wisps
+Authorization: {{admin}}
+
+{   "metaId":"3",
+    "sessionId":"2",
+    "name":"aka Aries",
+    "level":2,"minimumValue":5,
+    "maximumValue":8,"growthDays":2,
+    "growthPercent":3,"costAccompanyWisp":3,
+    "previewPhotoUrl":[{"url":"images//1324b885-75ed-4a56-bf85-63f0b96b3559.png"}]
+}
+

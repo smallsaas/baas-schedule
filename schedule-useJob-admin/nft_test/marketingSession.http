@@ -1,0 +1,50 @@
+@endpoint = http://repo.dev.smallsaas.cn:8084
+@local = http://localhost:8080
+@player1 = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6NTUwLCJhY2NvdW50IjoiYWNjMTQyOTQ0MzYiLCJkb21haW5Vc2VySWQiOjMzOSwiaWF0IjoxNjQxODc5NTQ4LCJqdGkiOiI1NTAiLCJzdWIiOiJhY2MxNDI5NDQzNiIsImV4cCI6MTY0MjEzODc0OH0.S1g8NwSfIYReSzi-bBoAPe7iODLcFM5fD90oaQZ_TqE6SAW1efJ3dnwzdA6JPtm9_if_hsyljy19dc4F2ATL-Q
+@manage1 = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjoyLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDE5NzU0NTgsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0MjIzNDY1OH0.Wh_wmHTu3JhElTbUrPfn9rENbuhzUxtUmDAwSIfDr48M7OPcpOQRCI-iUyJ-zcVN76yl5YvUQsVwMEbOzVpY-w
+
+### 查询场次
+GET {{local}}/api/crud/oms/marketingSession/marketingSessions
+Authorization: {{manage1}}
+
+### 更改场次
+PUT {{local}}/api/crud/oms/marketingSession/marketingSessions/32
+Authorization: {{manage1}}
+
+{
+    "createTime": "2022-01-10T15:16:19",
+    "endDate": "2022-01-13 08:01:01",
+    "endTime": "08:01:01",
+    "matchingRatio": 30,
+    "number": 9,
+    "startDate": "2022-01-13 07:16:03",
+    "startTime": "07:16:03",
+    "title": "LEVEL_9",
+    "updateTime": "2022-01-12T16:20:25"
+    }
+
+
+### 查询场次
+GET {{local}}/api/crud/oms/marketingSession/marketingSessions/34
+Authorization: {{manage1}}
+
+### 新建场次
+POST {{local}}/api/crud/oms/marketingSession/marketingSessions
+Authorization: {{manage1}}
+
+{
+    "createTime": "2022-01-10T15:16:19",
+    "endDate": "2022-01-13 08:01:01",
+    "endTime": "08:01:01",
+    "matchingRatio": 30,
+    "number": 9,
+    "startDate": "2022-01-13 07:16:03",
+    "startTime": "07:16:03",
+    "title": "LEVEL_9",
+    "updateTime": "2022-01-12T16:20:25"
+    }
+
+    
+###
+GET {{local}}api/crud/oms/player/players
+Authorization: {{manage1}}

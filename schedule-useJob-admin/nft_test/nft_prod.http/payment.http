@@ -1,0 +1,10 @@
+# 重新上传付款凭证
+@token = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6MjEsImFjY291bnQiOiJhY2M4NDg3MjM5MCIsImRvbWFpblVzZXJJZCI6MjAsImlhdCI6MTY0NDI4ODQ3NywianRpIjoiMjEiLCJzdWIiOiJhY2M4NDg3MjM5MCIsImV4cCI6MTY0NDU0NzY3N30.94p1EfAli4sUwWYNEg4uzHZh1UcqhsEqsjWpOw01iiv3unCMPzlzUGLJwMUUjkzzJkoT81zu9nz-Xs4opgMWJg
+
+POST http://api.dev.smallsaas.cn:8086/api/u/order/wisp/buyerReUploadPaymentProof HTTP/1.1
+Authorization: {{token}}
+Content-Type: application/json
+
+{"wispOrderId":"147",
+"pictureUrl":"http://api.dev.smallsaas.cn:8086/images//c7b33a21-cc5b-4e0a-8d95-e31488a7f15d.jpeg",
+"paymentMethod":"BANK_CARD_PAYMENT"}

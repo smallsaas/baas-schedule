@@ -1,0 +1,17 @@
+@endpoint = http://repo.dev.smallsaas.cn:8084
+@local = http://localhost:8080
+@player1 = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6NTUwLCJhY2NvdW50IjoiYWNjMTQyOTQ0MzYiLCJkb21haW5Vc2VySWQiOjMzOSwiaWF0IjoxNjQxODc5NTQ4LCJqdGkiOiI1NTAiLCJzdWIiOiJhY2MxNDI5NDQzNiIsImV4cCI6MTY0MjEzODc0OH0.S1g8NwSfIYReSzi-bBoAPe7iODLcFM5fD90oaQZ_TqE6SAW1efJ3dnwzdA6JPtm9_if_hsyljy19dc4F2ATL-Q
+@manage1 = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjoyLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDE5NjYyMzQsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0MjIyNTQzNH0.U4d2xuZY-rEQGEvIjn7ITHWA7aT99cV66dYWmwnwNgjVWpsftnSCXAhPsim0yv2HIXTubIXORxh4b6nw9P1Y_Q"
+# 18689911295 a123456
+@player2 = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6MTAsImFjY291bnQiOiJhY2M5NDA2NTAzMiIsImRvbWFpblVzZXJJZCI6OSwiaWF0IjoxNjQyNjcyODU0LCJqdGkiOiIxMCIsInN1YiI6ImFjYzk0MDY1MDMyIiwiZXhwIjoxNjQyOTMyMDU0fQ.H68IqftSZI3xo8zyceozBNJrtFbuYE7M-XNR6XYJKDEkpCA8VSIh2_2YM1PhUFy_Kukn7RJCDa7rEU226jNRPw
+
+### 申诉
+POST {{local}}/api/u/order/wisp/complain
+Authorization: {{player2}}
+
+{
+    "relationOrderId": 22,
+    "title": "其他",
+    "content": "少了10块",
+    "credentialLink": "憑證鏈接"
+}

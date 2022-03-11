@@ -1,0 +1,214 @@
+@endpoint=http://localhost:8080
+@local=http://localhost:8080
+@endpoint=http://api.dev.smallsaas.cn:8084
+@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjoyLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDI2MDA2NDYsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0Mjg1OTg0Nn0.Zm_9pZxoul6UJi6JdHZzJ8DpYfQG1wLcnhcv8u0yEQBQ3BAqam5xzTwOIKLQIHZFdAgkxQNS0lS7bBGev77zng
+@manage1 = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDU1ODMyMTQsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0NTg0MjQxNH0.OqTn-jDTFlwHGukC1-BDFSzQXkkNiTAI3DidpQQu91wpsKcAggIhIYK8_lML-3tQX61QhpUgmwmcj1DqOu1rcA
+@player = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6NjUsImFjY291bnQiOiJhY2M3MDI0OTM2MyIsImRvbWFpblVzZXJJZCI6NjAsImlhdCI6MTY0NTUwMjUyMiwianRpIjoiNjUiLCJzdWIiOiJhY2M3MDI0OTM2MyIsImV4cCI6MTY0NTc2MTcyMn0.0FC6j3kJdW7_MeEzKow3tEkfDPNmd4aosOSUr3KkEA8V1N0WRvASkAdw3qG7Tla6lRQHEDukmoPPZuQQnJe-Hg
+@player1 = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6MjEsImFjY291bnQiOiJhY2M4NDg3MjM5MCIsImRvbWFpblVzZXJJZCI6MjAsImlhdCI6MTY0NDYzMTEyOCwianRpIjoiMjEiLCJzdWIiOiJhY2M4NDg3MjM5MCIsImV4cCI6MTY0NDg5MDMyOH0.AQzkKqa-G14vtCJfLZXYr0X_ecaMwAEWzq10UXHhizlqR-p0j007a_arG799Oz7WRKHJESCFxUk6_5EAvxDrLw
+
+### 增加玩家
+POST  {{endpoint}}/api/crud/oms/wisp/wisps
+Authorization: {{token}}
+
+{
+    "sysUserId": "876708082437197888",
+    "name": "暗黑龙-LEVEL1",
+    "invitationCode": "40jj6k",
+    "mobilePhone": 18664521001,
+    "firstMobilePhoneCode": 1,
+    "backupMobilePhone": 18664521001,
+    "secondMobilePhoneCode": 1,
+    "paymentPassword": "1",
+    "checkPaymentPassword": "1",
+    "loginPassword": "1",
+    "checkLoginPassword": "1",
+    "isManager": 1,
+    "alipayAccount": "1",
+    "wechatAccount": "1",
+    "bankAccountName": "1",
+    "bankAccountNumber": 1
+}
+
+
+### 根据玩家状态查询
+GET {{local}}/api/crud/oms/player/players?playerStatus=FROZEN
+Authorization: {{manage1}}
+
+### 根据玩家状态查询
+GET {{local}}/api/crud/oms/player/players?
+Authorization: {{token}}
+
+### 根据玩家状态查询
+GET {{local}}/api/crud/oms/player/players?playerStatus=UNINSPECTED
+Authorization: {{token}}
+
+### 根据玩家状态查询
+GET {{local}}/api/crud/oms/player/players?startDate=2022-01-16&endDate=2022-01-17
+Authorization: {{token}}
+
+
+### 根据玩家状态查询
+GET {{local}}/api/crud/oms/player/players?search=cnf
+Authorization: {{token}}
+
+### 根据玩家状态查询
+GET {{local}}/api/crud/oms/player/players?playerId=436
+Authorization: {{token}}
+
+### 登陆
+POST {{local}}/api/app/oauth/player/login
+
+{
+"account":"18933934127",
+"password":"a123456"
+}
+
+### 买家重新付款
+POST {{local}}/api/u/order/wisp/buyerReUploadPaymentProof
+Authorization: {{player}}
+
+{
+    "wispOrderId":"112",
+    "pictureUrl":"1",
+    "paymentMethod":"BANK_CARD_PAYMENT"
+}
+
+### 重新申诉
+POST {{local}}/api/u/order/wisp/{complainId}/reComplain
+
+{
+    "credentialLink":"hahahha"
+}
+
+### she
+GET {{local}}/api/crud/oms/wispOrder/wispOrders/wisp/complains?requestType=FEEDBACK
+Authorization: {{manage1}}
+
+###
+GET {{local}}/api/u/complain
+
+{
+    "requestType":"FEEDBACK"
+}
+
+### 新建玩家
+POST {{local}}/api/crud/oms/player/players
+Authorization: {{manage1}}
+
+{
+"name":"huiliyi",
+"mobilePhone":13257003683,
+"backupMobilePhone":13257003683,
+"paymentPassword":"a123456",
+"checkPaymentPassword":"a123456"
+,"loginPassword":"a111111",
+"checkLoginPassword":"a111111",
+"isManager":1,"sysUserId":"13",
+"email":"754483487@qq.com",
+"bankName":"1","bankName2":"1"
+,"bankAccountNumber":"5668658553369993952"
+,"bankAccountNumber2":"5668658553369993952"
+}
+
+### 申诉驳回
+POST {{local}}/api/crud/oms/complain/complains/38/reject
+Authorization: {{manage1}}
+
+{"content":"情况符合"}
+
+### 获取申诉记录
+GET {{endpoint}}/api/crud/oms/wispOrder/wispOrders/wisp/complains?requestType=ORDER_DISPUTES
+Authorization: {{manage1}}
+
+
+###
+GET {{local}}/api/crud/oms/wisp/wisps/getWispListWithStatisticsByMarketingSessionId
+Authorization: {{manage1}}
+
+###
+GET {{local}}/api/u/order/wisp/record/sell
+Authorization: {{player1}}
+
+###
+GET {{endpoint}}/api/u/wisp/selling
+Authorization: {{player1}}
+
+###
+GET {{local}}/api/crud/oms/complainType/complainTypes?requestType=FEEDBACK
+Authorization: {{manage1}}
+
+###
+POST {{local}}/api/u/player/signInSettlement
+Authorization: {{player1}}
+
+{"incomeType":"recommendCoinCredit","number":"20"}
+
+###
+POST {{local}}/api/u/player/changProfitToWisp
+Authorization: {{player1}}
+
+{"incomeType":"recommendCoinCredit","wispId":"3"}
+
+###
+GET {{local}}/api/crud/oms/wisp/wisps/getWispListWithStatisticsByMarketingSessionId
+Authorization: {{manage1}}
+
+### 添加申诉类型
+POST {{local}}/api/crud/oms/complainType/complainTypes
+Authorization: {{manage1}}
+
+{
+    "title":"complainTest",
+    "requestType":"FEEDBACK"
+}
+
+###
+GET {{local}}/api/u/order/wisp/complains?requestType=FEEDBACK&pageSize=1&pageNum=1
+Authorization: {{player1}}
+
+###
+GET {{local}}/api/crud/oms/player/players/58
+Authorization: {{manage1}}
+
+###
+GET {{local}}/api/crud/oms/wispOrder/wispOrders/wisp/complain/45
+Authorization: {{manage1}}
+
+
+###
+GET {{local}}/api/crud/oms/player/players/58
+Authorization: {{manage1}}
+
+###
+POST {{local}}/api/u/order/wisp/complain
+Authorization: {{player}}
+Content-Type: application/json
+
+{"relationOrderId":1048,"title":"情況不符合","content":"对方没处理","credentialLink":["https://www.metagugu.net/images//3ae4a742-8279-4586-9291-d6b9c3b56c93.jpg"]}
+
+
+###
+GET {{local}}/api/crud/fieldModel/fieldModels
+Content-Type: application/json
+
+###
+GET {{local}}/api/crud/oms/manager/managers/queryManagerGivenPlayerCoins?_t=1645582638792&pageNum=1&pageSize=10
+Authorization: {{manage1}}
+
+###
+PUT {{local}}/api/crud/oms/player/players/53
+Authorization: {{manage1}}
+Content-Type: application/json
+
+{
+    "name": "好了"
+}
+
+###
+get {{local}}/api/crud/oms/wispBookingRecord/wispBookingRecords?nextSuccessMatch=1
+Authorization: {{manage1}}
+Content-Type: application/json
+
+###
+PUT {{local}}/api/crud/oms/wispBookingRecord/wispBookingRecords/nextSuccessMatch/1372
+Authorization: {{manage1}}

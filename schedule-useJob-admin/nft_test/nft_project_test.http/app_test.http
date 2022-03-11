@@ -1,0 +1,73 @@
+@local = http://localhost:8080
+@endpoint = http://repo.dev.smallsaas.cn:8084
+@huiliyi = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6NzIyLCJhY2NvdW50IjoiYWNjOTk2MDkwNDciLCJkb21haW5Vc2VySWQiOjQ2MywiaWF0IjoxNjQyODM3NDc4LCJqdGkiOiI3MjIiLCJzdWIiOiJhY2M5OTYwOTA0NyIsImV4cCI6MTY0MzA5NjY3OH0.eOmDLwzX9qz1XSzh2PdAacCXwcEQe3GGB_yZmkcvpg3oOqh2IGIBoYcDeXtkRh2IfiGi_wDjEpNUiTTcZzssPg
+
+### 注册接收验证码
+POST {{local}}/api/sms/v1/captcha
+
+{
+  "phone": "15322315902",
+  "operation": "register"
+}
+
+### 玩家注册
+POST {{local}}/api/app/oauth/player/register
+
+{
+    "name": "绘梨衣1",
+    "phone": "15322315902",
+    "verifyCode": "56185",
+    "loginPassword": "admin123",
+    "invitationCode": "9spa1m",
+    "paymentPassword": "admin123456"
+}
+
+### 登陆接收验证码
+POST {{local}}/api/sms/v1/captcha
+
+{
+  "phone": "15322315902",
+  "operation": "login"
+}
+
+### 玩家登陆
+POST {{local}}/api/app/oauth/player/login
+
+{
+    "account": "15322315902",
+    "password": "admin123",
+    "verifyCode":"81648"
+}
+
+### 购买能量晶石 
+//gugu令不足 提示购买gugu令
+POST {{local}}/api/u/companionWisp/1/buy
+Authorization: {{huiliyi}}
+
+{
+  "companionWispId": 1,
+  "number": 999,
+  "paymentPassword": "admin123456"
+}
+
+### 预约土地
+POST {{local}}/api/u/land/1/buy
+Authorization: {{huiliyi}}
+
+{
+  "paymentPassword": "admin123456",
+  "purchaseQuantity": 1
+}
+
+### 查看玩家资源
+GET {{endpoint}}/api/u/player/wallet
+Authorization: {{huiliyi}}
+
+### 预约精灵
+POST {{local}}/api/u/wisp/1/book
+Authorization: {{huiliyi}}
+
+{
+  "paymentPassword": "admin123456"
+}
+

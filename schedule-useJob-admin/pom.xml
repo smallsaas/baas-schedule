@@ -8,72 +8,27 @@
     <version>1.0.0</version>
 
     <parent>
-        <artifactId>baas-schedule</artifactId>
+        <artifactId>pom-parent</artifactId>
         <groupId>com.jfeat</groupId>
         <version>1.0.0</version>
         <relativePath/>
     </parent>
 
     <properties>
-        <skipStandalone>false</skipStandalone>
+        <skipStandalone>true</skipStandalone>
         <lombok.version>1.18.4</lombok.version>
     </properties>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>com.jfeat</groupId>-->
-<!--            <artifactId>oms</artifactId>-->
-<!--            <version>1.0.0</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.jfeat</groupId>-->
-<!--            <artifactId>user-vip</artifactId>-->
-<!--            <version>1.0.0</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.jfeat</groupId>
             <artifactId>crud-runtime</artifactId>
             <version>0.0.1</version>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.jfeat</groupId>-->
-<!--            <artifactId>baas-ticket</artifactId>-->
-<!--            <version>1.0.0</version>-->
-<!--        </dependency>-->
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>dev-dependency</artifactId>
-            <version>0.0.1</version>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.jfeat</groupId>-->
-<!--            <artifactId>team</artifactId>-->
-<!--            <version>1.0.0</version>-->
-<!--        </dependency>-->
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>perm-core</artifactId>
-            <version>0.1.2</version>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.jfeat</groupId>-->
-<!--            <artifactId>user-account</artifactId>-->
-<!--            <version>1.0.0</version>-->
-<!--        </dependency>-->
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>field-config</artifactId>
-            <version>1.2.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-typehandlers-jsr310</artifactId>
-            <version>1.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.9.2</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
@@ -88,53 +43,9 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct</artifactId>
-            <version>1.4.2.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-processor</artifactId>
-            <version>1.4.2.Final</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.12.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>3.3.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>spring-mock-mvc</artifactId>
-            <version>3.3.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.1.1.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>1.16.2</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.27</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jfeat</groupId>
@@ -142,50 +53,17 @@
             <version>0.0.5</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>2.4.5</version>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.jfeat</groupId>-->
-<!--            <artifactId>jwt-core</artifactId>-->
-<!--            <version>0.1.2</version>-->
-<!--        </dependency>-->
-        <dependency>
             <groupId>com.jfeat</groupId>
             <artifactId>crud-plus</artifactId>
             <version>0.1.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>dev-cors</artifactId>
-            <version>0.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>statistic</artifactId>
-            <version>1.3.0</version>
-        </dependency>
-<!--        &lt;!&ndash; sms &ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>com.jfeat</groupId>-->
-<!--            <artifactId>sms-sdk</artifactId>-->
-<!--            <version>1.0-SNAPSHOT</version>-->
-<!--        </dependency>-->
-        <!--approve-->
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>mbcs</artifactId>
-            <version>1.1.0</version>
-        </dependency>
-        <!--    filedModule    -->
-        <dependency>
-            <groupId>com.jfeat</groupId>
-            <artifactId>lc_field_model</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.27</version>
         </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
@@ -279,18 +157,13 @@
 
     <distributionManagement>
         <repository>
-            <id>archiva-internal-dev</id>
+            <id>archiva-internal</id>
             <name>Internal Repository</name>
-            <url>http://36.138.165.246:8082/repository/internal</url>
+            <url>http://git.smallsaas.cn:8081/repository/internal</url>
         </repository>
     </distributionManagement>
 
     <repositories>
-        <repository>
-            <id>archiva-internal-dev</id>
-            <name>Internal Repository</name>
-            <url>http://repo.dev.smallsaas.cn:8082/repository/internal</url>
-        </repository>
         <repository>
             <id>archiva-internal</id>
             <name>Internal Repository</name>

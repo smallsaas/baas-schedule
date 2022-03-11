@@ -1,0 +1,218 @@
+@endpoint = http://repo.dev.smallsaas.cn:8084
+@app = http://api.dev.smallsaas.cn:8087
+@local = http://localhost:8080
+@player1 = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6NzIwLCJhY2NvdW50IjoiYWNjMTcyMTE3NSIsImRvbWFpblVzZXJJZCI6NDYxLCJpYXQiOjE2NDI5OTEzODUsImp0aSI6IjcyMCIsInN1YiI6ImFjYzE3MjExNzUiLCJleHAiOjE2NDMyNTA1ODV9.iDlL2XFLQCLOKmpMRZTyU5IGrCEgvb-22jqpDWue9agZ50ufuTijqXOqbNWKvyZ_NP5oRKiMh_gF8CLW6fEwQw
+@manage1 = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjoyLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDIyMzUwODEsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0MjQ5NDI4MX0.eyUbNk8ZFg-xJAMNosSHIlnJo5rjCo_-Jtfvx8cuOnVEzuJqBvOuOBK6MGSlw5xmaCf72y8aMKIgqLPcTGbAGQ
+@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjoyLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDI2MDA2NDYsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0Mjg1OTg0Nn0.Zm_9pZxoul6UJi6JdHZzJ8DpYfQG1wLcnhcv8u0yEQBQ3BAqam5xzTwOIKLQIHZFdAgkxQNS0lS7bBGev77zng
+@admin= Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDMwNzYxNjMsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0MzMzNTM2M30.lO0hgdgjeEuYoyhH0oUttf7m7kKRcZGuVdbb5Jgm5pRtuuZaxxF4EhfYFfiq8ZaCU7GOxI3hT-v5HwBQpqpPyg
+
+### 新建玩家
+POST {{endpoint}}/api/crud/oms/player/players
+Authorization: {{admin}}
+
+{
+    "alipayAccount": "kaisa",
+    "alipayQrCodePhotoUrl": "kaisa",
+    "backupMobilePhone": "15322315900",
+    "backupMobilePhoneCode": "",
+    "bankAccountName": "绘梨衣",
+    "bankAccountNumber": "15322315900",
+    "frontIdCardPhotoUrl": "",
+    "invitationCode": "339jjj",
+    "isManager": 0,
+    "loginPassword": "admin",
+    "mobilePhone": "15322315900",
+    "mobilePhoneCode": "",
+    "name": "绘梨衣",
+    "paymentPassword": "admin",
+    "reverseSideIdCardPhotoUrl": "",
+    "wechatAccount": "15322315900",
+    "wechatQrCodePhotoUrl": ""
+}
+
+
+### 新建玩家
+POST {{local}}/api/crud/oms/player/players
+Authorization: {{admin}}
+
+{
+    "alipayAccount": "13660878929",
+    "backupMobilePhone": "13660878929",
+    "backupMobilePhoneCode": "",
+    "bankAccountName": "13660878929",
+    "bankAccountNumber": "13660878929",
+    "frontIdCardPhotoUrl": "",
+    "isManager": 0,
+    "loginPassword": "a123456",
+    "mobilePhone": "13660878929",
+    "mobilePhoneCode": "",
+    "name": "13660878929",
+    "paymentPassword": "b123456",
+    "reverseSideIdCardPhotoUrl": "",
+    "wechatAccount": "13660878929",
+    "wechatQrCodePhotoUrl": ""
+}
+
+### 新建玩家
+POST {{endpoint}}/api/crud/oms/player/players
+Authorization: {{manage1}}
+
+{
+    "alipayAccount": "kaisa",
+    "alipayQrCodePhotoUrl": "kaisa",
+    "backupMobilePhone": "15322315901",
+    "backupMobilePhoneCode": "",
+    "bankAccountName": "楚子航",
+    "bankAccountNumber": "15322315901",
+    "frontIdCardPhotoUrl": "",
+    "invitationCode": "339jjj",
+    "isManager": 0,
+    "loginPassword": "admin",
+    "mobilePhone": "15322315901",
+    "mobilePhoneCode": "",
+    "name": "楚子航",
+    "paymentPassword": "admin",
+    "reverseSideIdCardPhotoUrl": "",
+    "wechatAccount": "15322315901",
+    "wechatQrCodePhotoUrl": ""
+}
+
+### 新建玩家
+POST {{endpoint}}/api/crud/oms/player/players
+Authorization: {{manage1}}
+
+{
+    "alipayAccount": "kaisa",
+    "alipayQrCodePhotoUrl": "kaisa",
+    "backupMobilePhone": "15322315903",
+    "backupMobilePhoneCode": "",
+    "bankAccountName": "路明泽",
+    "bankAccountNumber": "15322315903",
+    "frontIdCardPhotoUrl": "",
+    "invitationCode": "339jjj",
+    "isManager": 0,
+    "loginPassword": "admin",
+    "mobilePhone": "15322315903",
+    "mobilePhoneCode": "",
+    "name": "路明泽",
+    "paymentPassword": "admin",
+    "reverseSideIdCardPhotoUrl": "",
+    "wechatAccount": "15322315903",
+    "wechatQrCodePhotoUrl": ""
+}
+
+
+### 删除玩家
+DELETE {{local}}/api/crud/oms/player/players/62
+Authorization: {{manage1}}
+
+### 获取玩家信息
+GET {{local}}/api/crud/oms/player/players
+Authorization: {{manage1}}
+
+### 获取玩家信息
+GET {{local}}/api/crud/oms/player/players
+Authorization: {{token}}
+
+
+###新建player
+GET {{endpoint}}/api/crud/oms/player/players
+Authorization: {{manage1}}
+
+
+### 修改玩家信息
+PUT {{endpoint}}/api/u/player
+Authorization: {{player1}}
+
+{
+  "backupMobilePhone": "15322315902",
+  "verifyCode":"99879"
+}
+
+### 店小二修改玩家信息
+PUT {{endpoint}}/api/crud/oms/player/players/68
+Authorization: {{manage1}}
+
+{
+  "password": "admin"
+}
+
+### 店小二修改玩家手机号
+@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDQ0ODE2ODksImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0NDc0MDg4OX0.Eq0Bck6iPPgBRiEsBVVyDD4G7PhrTaPuOhP7Z8En5Qoqa2Mg1hywxB-rbq6744kP8zEaO3Uc9mD1cgMvVAovIA
+PUT {{local}}/api/crud/oms/player/players/54
+Authorization: {{token}}
+
+{"inviterCode":"tec9wr",
+"wispTransforms":[],
+"currentAdoptWisp":0,
+"paymentPassword":"",
+"playerSignRecords":[],
+"managerName":"13800000006",
+"wispCoinRecords":[],
+"managerPlayerId":7,
+"deleteFlag":0,
+"sysName":"dianxiaoerG",
+"isManager":0,
+"id":54,
+"landContracts":[],
+"coinsAmount":0,
+"invitationCode":"co7iev",
+"consecutiveMatchFailTimes":0,
+"frozenNumber":"0",
+"level":"-1",
+"userId":60,
+"inviterName":"小激动",
+"inviterPhone":"13687434530",
+"wispOrders":[],
+"adoptWispCount":0,
+"mobilePhone":13800000201,
+"recommendCount":0,
+"createTime":"2022-02-12T01:11:57",
+"teamSize":1,"name":"一个卖家",
+"backupMobilePhone":"13822222222",
+"status":"PENDING"}
+
+
+
+### 后台创建玩家异常
+@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDQ4MDU5NzcsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0NTA2NTE3N30.Xazk4Cp7Eeq2mrY3eD46DYgemqry1o4gu3dCMEEYSP5-m16mEVez20U6H6oMsAxB9sXRkyHOOCBGx7nV2Kfx-Q
+POST {{local}}/api/crud/oms/player/players
+Authorization: {{token}}
+
+{"name":"DD12345",
+"mobilePhone":13560126625,
+"backupMobilePhone":13560126699,
+"isManager":0,
+"invitationCode":"jlh43c"}
+
+###`
+GET {{local}}/api/crud/oms/player/players/20
+Authorization: {{token}}
+
+### 冻结玩家id=20
+POST {{local}}/api/crud/oms/player/players/lock/20
+Authorization: {{token}}
+
+### 解冻玩家id=20
+POST {{local}}/api/crud/oms/player/players/unlock/20
+Authorization: {{token}}
+
+### 修改备用手机号
+POST {{endpoint}}/api/u/player/backupMobilePhone/change
+Authorization: {{player1}}
+
+{
+  "newBackupMobilePhone": "15322315902",
+  "verifyCode": "string"
+}
+
+### 修改玩家支付密码
+POST {{local}}/api/u/player/paymentPassword/change
+Authorization: {{player1}}
+
+{
+  "newPaymentPassword": "54321",
+  "verifyCode": "string"
+}
+
+

@@ -1,0 +1,19 @@
+@endpoint = http://repo.dev.smallsaas.cn:8084
+@local = http://localhost:8080
+@manage = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjoyLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDI2NTI4NTMsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0MjkxMjA1M30._zoaYaPO5Zb_7KzdKSLpsg7RmR6YeiFUYaxkwOkdIqGRK2wW-k7niWpPh4b-ADFuv3TyM6gAshUhPnADn0Xuvw
+
+### 审批通过，创建日志保存工作流
+POST {{local}}/api/meta/entity/status/entities/461/action/pass
+Authorization: {{manage}}
+
+{
+  "note": "绘梨衣审核通过"
+}
+
+### 审批不通过，tode:创建日志保存工作流
+POST {{endpoint}}/api/crud/oms/player/reject/461
+Authorization: {{manage}}
+
+{
+  "note": "绘梨衣不通过"
+}

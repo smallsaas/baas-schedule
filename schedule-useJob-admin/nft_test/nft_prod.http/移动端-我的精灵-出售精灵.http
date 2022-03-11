@@ -1,0 +1,12 @@
+@22token = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6MjEsImFjY291bnQiOiJhY2M4NDg3MjM5MCIsImRvbWFpblVzZXJJZCI6MjAsImlhdCI6MTY0NDM5NzAxMiwianRpIjoiMjEiLCJzdWIiOiJhY2M4NDg3MjM5MCIsImV4cCI6MTY0NDY1NjIxMn0.-ItEksthR7a_AEHAdmPctGAj9Zn0L0or6syhLvFC7A_FafVfcDDQC1rZMATXPHac5PNk9hu8t28GAM3PYu7bEg
+@local = http://localhost:8080
+
+GET {{local}}/api/u/wisp/selling?onlyCurrentDay=1&pageSize%3D100=&pageNum=1
+
+
+### 查询玩家当前出售精灵
+@token = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6NTksImFjY291bnQiOiJhY2MxNDg3NzA1NCIsImRvbWFpblVzZXJJZCI6NTQsImlhdCI6MTY0NjAzMzk3MSwianRpIjoiNTkiLCJzdWIiOiJhY2MxNDg3NzA1NCIsImV4cCI6MTY0NjI5MzE3MX0.E8_x87RtGIyAubBRO2nCAtwFzJgMi93_3APG1svQccubExZNWYw1Uoy6Va_xl-bOy1TmmX-taSTD_tkJP-jVzw
+
+GET {{local}}/api/u/wisp/selling?onlyCurrentDay=1&pageNum=1&pageSize=100
+Authorization: {{token}}
+

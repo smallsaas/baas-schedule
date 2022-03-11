@@ -1,0 +1,12 @@
+@endpoint = http://api.dev.smallsaas.cn:8084
+@local = http://localhost:8080
+@player = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6NzIwLCJhY2NvdW50IjoiYWNjMTcyMTE3NSIsImRvbWFpblVzZXJJZCI6NDYxLCJpYXQiOjE2NDMxMDU0MjcsImp0aSI6IjcyMCIsInN1YiI6ImFjYzE3MjExNzUiLCJleHAiOjE2NDMzNjQ2Mjd9.vye1HSI_YAaT9X4xjx0Iq1Mt3PMV6UoIsJ02mN4LEOLtox7RzEKr4OA4yWRZbLRWoR8SXj5ZlncdPalr2vFWtQ
+
+### 收益转化为精灵
+POST  {{local}}/api/u/player/changProfitToWisp
+Authorization: {{player}}
+
+{
+    "incomeType":"teamCoinCredit",
+    "wispId":8
+}

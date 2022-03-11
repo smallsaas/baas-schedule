@@ -1,0 +1,73 @@
+@endpoint = http://repo.dev.smallsaas.cn:8084
+@local = http://localhost:8080
+@player1 = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6MSwidXNlcklkIjo1OTcsImFjY291bnQiOiJhY2MxMzM0MTc3MCIsImRvbWFpblVzZXJJZCI6Mzc3LCJpYXQiOjE2NDI1NTkzMzUsImp0aSI6IjU5NyIsInN1YiI6ImFjYzEzMzQxNzcwIiwiZXhwIjoxNjQyODE4NTM1fQ.Q0vBG_XYr68MhaNDE5-_9k3670dr3wS4a12V7cJ6eGxpbTI5s1o_3xcE3_VunEUJogyfZxcm4YkVV2LQM_BB5w
+@manage1 = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidXNlclR5cGUiOjEwMSwiYlVzZXJUeXBlIjoiU1lTVEVNIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsImV4dHJhVXNlclR5cGUiOjAsImlhdCI6MTY0MDY3OTI3MSwianRpIjoiMSIsInN1YiI6ImFkbWluIiwiZXhwIjoxNjQwOTM4NDcxfQ.728Cw1M9QhgxfBHukkepdSGb1sS8B3dgt1x7wduDMyyrwi10fMbCupAFbw5UOUoX84lG-LERKhwqIwTR3HJ2Dw
+
+@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDQzMDIyNDYsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0NDU2MTQ0Nn0.0MCl73AgibgW_iAPVgsM32kYW4b5fSxARNO1QG89FlxtwxO7lUbSr6jvYg5EwOOKGMtXbp4iz4UjExr_WID4hw
+
+
+###
+POST {{local}}/api/u/player/unlock
+Authorization: {{player1}}
+
+### 玩家按精灵状态查看持有的精灵副本
+GET {{local}}/api/u/player/queryPlayerWispInstance?stage=TRADING
+Authorization: {{player1}}
+
+### 修改玩家备用手机号
+POST {{local}}/api/u/player/backupMobilePhone/change
+Authorization: {{player1}}
+
+{
+    "newBackupMobilePhone":"15322315910",
+    "verifyCode":"91786"
+}
+
+
+
+
+### 修改玩家备用手机号
+POST {{local}}/api/u/player/backupMobilePhone/change
+Authorization: {{}}
+
+{
+    "newBackupMobilePhone":"18664521094",
+    "verifyCode":"27475"
+}
+
+
+### 修改玩家信息
+put {{local}}api/u/player
+
+
+@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDQzMDIyNDYsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0NDU2MTQ0Nn0.0MCl73AgibgW_iAPVgsM32kYW4b5fSxARNO1QG89FlxtwxO7lUbSr6jvYg5EwOOKGMtXbp4iz4UjExr_WID4hw
+### 
+GET http://localhost:8080/api/u/player/getUserWisp
+Authorization: {{token}}
+
+
+
+### 查询玩家持有的精灵实例
+GET {{local}}/api/crud/oms/wispInstance/wispInstances?sysPlayerId=116&playerHint=13527683452
+Authorization: {{token}}
+
+
+### 查询玩家持有的精灵实例
+GET {{local}}/api/crud/oms/wispInstance/wispInstances?wispLevel=7&stage=SELLING
+Authorization: {{token}}
+
+###
+GET {{local}}/api/crud/oms/wispInstance/wispInstances?wispLevel=7&stage=SELLING
+Authorization: {{token}}
+
+@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDQ1NjYxNTUsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0NDgyNTM1NX0.oAQQhKU5Z4DWR6LWt4aP3JHjtJwoAlVdI_77zlSIs7ds3mSCv9QWvtyNSleixJ-CipY7c56YpGJdn0TbtnKamA
+### 锁定精灵副本169
+POST {{local}}/api/crud/oms/wispInstance/wispInstances/169/lock
+Authorization: {{token}}
+
+{"lockDays":10}
+
+
+### 获取店小二列表信息
+GET {{local}}/api/crud/oms/manager/managers/getManagerList
+Authorization: {{token}}

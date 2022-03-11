@@ -1,0 +1,59 @@
+# @endpoint=http://webapp.metagugu.net
+@endpoint=http://api.dev.smallsaas.cn:8084
+@endpoint=http://localhost:8080
+
+@admin= Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDMwNzQ2OTYsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0MzMzMzg5Nn0.vk76KxVHKlzBgYpRS4zCuagVrt8L2tEZ7et8B76KhfDbXmFsWqu6M2Cmcl5Tzoo-ummj94VmPcm7MgYNXkWjQQ
+
+@token = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDQ0ODE2ODksImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0NDc0MDg4OX0.Eq0Bck6iPPgBRiEsBVVyDD4G7PhrTaPuOhP7Z8En5Qoqa2Mg1hywxB-rbq6744kP8zEaO3Uc9mD1cgMvVAovIA
+
+### 发币 
+POST {{endpoint}}/api/crud/oms/manager/managers/sendCoins
+Authorization: {{admin}}
+
+{
+    "targetPlayerMobilePhone": 13660878929,
+    "number": 5000,
+    "paymentPassword": "b123456"
+}
+
+### 
+POST {{endpoint}}/api/crud/oms/manager/managers/sendCoins
+Authorization: {{token}}
+
+{"coinsAmount":16755472,
+"companionWispAmount":170,
+"createTime":"2021-12-16T09:55:21",
+"depositPoints":0,
+"frozenNumber":0,
+"id":"1",
+"inactive":0,
+"invitingOneBallance":null,
+"invitingTwoBallance":null,
+"landRemainingDays":4,
+"level":20,
+"marketPoints":0,
+"paymentPassword":"123456",
+"playerId":"1",
+"recommendCoinCredit":null,
+"recommendPoints":0,
+"redepositBallance":null,
+"salt":null,
+"signBallance":null,
+"signInCoinCredit":0,
+"teamBallance":null,
+"teamCoinCredit":null,
+"tradeUnionPoints":0,
+"transferCoinCredit":0,
+"type":0,
+"updateTime":"2021-12-21T17:45:48",
+"targetPlayerMobilePhone":"13800000001",
+"number":1234}
+
+### 生产环境
+{
+     "targetPlayerMobilePhone": "18689911295", 
+     "number": 100000, 
+     "paymentPassword": "admin"
+}
+
+

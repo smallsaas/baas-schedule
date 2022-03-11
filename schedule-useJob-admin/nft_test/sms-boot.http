@@ -1,0 +1,68 @@
+@endpoint = http://api.dev.smallsaas.cn:8084
+@send = http://zzsms365.com
+@sendback = http://www.weiwebs.cn/msg/HttpSendSM
+@sendThree = http://www.weiwebs.cn/msg/HttpBatchSendSM
+@local = http://localhost:8080
+@player1 = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6NTUwLCJhY2NvdW50IjoiYWNjMTQyOTQ0MzYiLCJkb21haW5Vc2VySWQiOjMzOSwiaWF0IjoxNjQxODg2OTM1LCJqdGkiOiI1NTAiLCJzdWIiOiJhY2MxNDI5NDQzNiIsImV4cCI6MTY0MjE0NjEzNX0.jgcD2MZamiawDZulPwUAK024MgMwOCDBt2tAawjTh_6ZPpbGlJpEU0SezJhCD7GXyScrsjFpA6LEcvr1rc2CCg
+@manage1 = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjoyLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDE4ODA5NjcsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0MjE0MDE2N30.DU187aAbEk-0RBmcKfpyUJjSnKb6mLiFnecp9fRQdD8lXxOZ05_q2_dD69Ya5kPuZn5N6NMEltxr4BOZmiWliw
+
+### 发送接口
+POST {{send}}/sms.aspx?action=send&userid=3371&account=MXT801633&password=Mxt801636&mobile=15322315902&content=【metagugu】您的短信验证码是：5580，2分钟内有效&sendTime=&extno=
+
+### 发送接口（备用）
+POST {{sendThree}}?account=MXT801633&pswd=Mxt801636&mobile=15322315902&msg=【元咕咕】恭喜您匹配成功，请在2小时内登录进行处理&needstatus=true&product=
+
+###
+POST {{send}}/sms.aspx?action=send&userid=3371&account=895883631&password=895883631&mobile=15322315902&content=%E3%80%90metagugu%E3%80%91%E6%82%A8%E7%9A%84%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81%E6%98%AF%EF%BC%9A0680%EF%BC%8C2%E5%88%86%E9%92%9F%E5%86%85%E6%9C%89%E6%95%88&sendTime=&extno=
+
+###
+POST {{send}}/loginBlue.html?action=send&userid=3371&account=895883631&password=895883631&mobile=15322315902&content=%E3%80%90metagugu%E3%80%91%E6%82%A8%E7%9A%84%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81%E6%98%AF%EF%BC%9A0680%EF%BC%8C2%E5%88%86%E9%92%9F%E5%86%85%E6%9C%89%E6%95%88&sendTime=&extno=
+
+### 余额及发送量查询
+POST {{send}}/sms.aspx?action=overage&userid=3371&account=895883631&password=895883631
+
+### 非法关键词查询
+POST {{send}}/sms.aspx?action=checkkeyword&userid=3371&account=895883631&password=895883631&content=123
+
+### 状态报告接口
+POST {{send}}/statusApi.aspx?action=query&userid=3371&account=895883631&password=895883631
+
+### 上行接口
+POST {{send}}/callApi.aspx?action=query&userid=3371&account=895883631&password=895883631
+
+### 密码修改接口
+POST {{send}}/sms.aspx?action=changespwd&userid=3371&account=895883631&password=895883631&newpwd=895883631&renewpwd=895883631
+
+
+### 登陆
+POST {{local}}/api/sms/v1/captcha
+
+{
+  "phone": "15322315902",
+  "operation": "login"
+}
+
+### 修改
+POST {{local}}/api/sms/v1/captcha
+
+{
+  "phone": "15322315902",
+  "operation": "changeAccount"
+}
+
+### 注册
+POST {{endpoint}}/api/sms/v1/captcha
+Content-Type: application/json
+
+{
+  "phone": "15322315902",
+  "operation": "register"
+}
+
+### 找回
+POST {{local}}/api/sms/v1/captcha
+
+{
+  "phone": "15322315902",
+  "operation": "findPassword"
+}

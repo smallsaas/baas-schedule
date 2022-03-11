@@ -10,8 +10,5 @@
         <module name="schedule-useJob-admin" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="schedule-use-admin" target="11" />
-    </bytecodeTargetLevel>
   </component>
 </project>

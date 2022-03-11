@@ -1,0 +1,43 @@
+@endpoint = http://repo.dev.smallsaas.cn:8084
+@local = http://localhost:8080
+@player1 = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6MTIwLCJhY2NvdW50IjoiYWNjMzMzMDkzNjUiLCJkb21haW5Vc2VySWQiOjY1LCJpYXQiOjE2NDI4NDUwNDgsImp0aSI6IjEyMCIsInN1YiI6ImFjYzMzMzA5MzY1IiwiZXhwIjoxNjQzMTA0MjQ4fQ.CGy24K7LtOb7lkpQST9uj16yhNk0JJmibORu_8ZvKW3Yr4M7KmSinf8vpTC6EPywrAUz7EpOdgvbxq21IY87xw
+@manage1 = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDEyNjAzNTIsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0MTUxOTU1Mn0.3lhcHZhXHancdC4Nn0DR9CNbwEnPyHG5mFhPZOrLUjPvAmLX7p2ALlH8JgMTdHVBauh5IUnhNQVw7viz8flvfg
+
+
+// 查看订单信息
+### 获取买家精灵订单列表信息
+GET {{endpoint}}/api/u/order/wisp/buy
+Authorization: {{player1}}
+
+### 获取卖家精灵订单列表信息
+GET {{endpoint}}/api/u/order/wisp/sell
+Authorization: {{player1}}
+
+
+// 付款
+### 买家付款
+POST {{local}}/api/u/order/wisp/57/confirmPayment?pictureUrl=1
+Authorization: {{player1}}
+
+
+
+### 卖家确认
+@token = Bearer eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFM1MTIifQ.eyJvcmdJZCI6IiIsInVzZXJJZCI6MjEsImFjY291bnQiOiJhY2M4NDg3MjM5MCIsImRvbWFpblVzZXJJZCI6MjAsImlhdCI6MTY0NDU2NzM1MCwianRpIjoiMjEiLCJzdWIiOiJhY2M4NDg3MjM5MCIsImV4cCI6MTY0NDgyNjU1MH0.3WollEFbFQ_kHdea-MZLI_yhl96HxhDByMT6L_E5A1FfaFOHX9_BN59LKYHlFjnzegmrVvbKfmAkBNkw0cyObA
+POST {{local}}/api/u/order/wisp/327/confirmReceived
+Authorization: {{token}}
+
+{
+    "paymentPassword":"b123456"
+}
+
+### 获取获取玩家待支付的精灵订单列表信息
+GET {{endpoint}}/api/u/order/wisp/waitingPaymentList
+Authorization: {{player1}}
+
+### 玩家预约精灵记录列表信息
+GET {{endpoint}}/api/crud/oms/wispBookingRecord/wispBookingRecords/queryPlayerWispBookingRecordPage
+Authorization: {{player1}}
+
+### 店小二查看未付款列表
+GET {{local}}/api/crud/oms/wispOrder/wispOrders/waitingPaymentList
+Authorization: {{manage1}}
