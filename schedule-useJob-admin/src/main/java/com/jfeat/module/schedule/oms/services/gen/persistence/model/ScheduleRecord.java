@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -32,13 +33,13 @@ public class ScheduleRecord extends Model<ScheduleRecord> {
       /**
      * 运行时间
      */
-      @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+      @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
       private LocalDateTime createTime;
 
       /**
      * 结束时间
      */
-      @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+      @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
       private LocalDateTime endTime;
 
       /**
@@ -144,7 +145,7 @@ public class ScheduleRecord extends Model<ScheduleRecord> {
 
     @Override
     public String toString() {
-        return "SecheduleRecord{" +
+        return "ScheduleRecord{" +
               "id=" + id +
                   ", createTime=" + createTime +
                   ", endTime=" + endTime +

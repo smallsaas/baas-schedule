@@ -37,11 +37,11 @@ public interface QueryScheduleRecordDao extends QueryMasterDao<ScheduleRecord> {
      */
     List<ScheduleRecordModel> queryMasterModelList(@Param("masterId") Object masterId);
 
-    @Select("SELECT * from t_schedule_record where t_schedule_record.job_id = #{jobId} group by create_time DESC limit 1")
+    @Select("SELECT * from t_schedule_record where t_schedule_record.job_id = #{jobId} order by create_time DESC limit 1")
     ScheduleRecord queryLastRecord(@Param("jobId") Long jobId);
 
     @Select("SELECT t_schedule_record.*,t_schedule_job_record.job_name AS jobName FROM t_schedule_record  \n" +
             "            LEFT JOIN t_schedule_job_record ON t_schedule_record.job_id = t_schedule_job_record.id \n" +
-            "            where DATE(create_time) = Date(NOW())")
+            "            where DATE(create_time) = Date(NOW()) order BY create_time DESC")
     List<ScheduleRecordRecord> queryTodayRecord();
 }

@@ -70,5 +70,6 @@
             OR t_schedule_record.name LIKE CONCAT('%',#{search},'%')
         </if>
         -->
+        order BY create_time DESC
                                     </select>
 </mapper>
