@@ -61,6 +61,12 @@ public class ScheduleRecord extends Model<ScheduleRecord> {
        */
       private Long sessionId;
 
+    /**
+     *
+     * @return
+     */
+    private String scheduleNumber;
+
     
     public Long getId() {
         return id;
@@ -116,6 +122,14 @@ public class ScheduleRecord extends Model<ScheduleRecord> {
           return this;
       }
 
+    public String getScheduleNumber() {
+        return scheduleNumber;
+    }
+
+    public void setScheduleNumber(String scheduleNumber) {
+        this.scheduleNumber = scheduleNumber;
+    }
+
     public Long getSessionId() {
         return sessionId;
     }
@@ -138,6 +152,8 @@ public class ScheduleRecord extends Model<ScheduleRecord> {
 
       public static final String SESSION_ID = "session_id";
 
+      public static final String SCHEDULE_NUMBER = "schedule_number";
+
       @Override
     protected Serializable pkVal() {
           return this.id;
@@ -146,13 +162,14 @@ public class ScheduleRecord extends Model<ScheduleRecord> {
     @Override
     public String toString() {
         return "ScheduleRecord{" +
-              "id=" + id +
-                  ", createTime=" + createTime +
-                  ", endTime=" + endTime +
-                  ", jobId=" + jobId +
-                  ", useTime=" + useTime +
-                  ", usePlayerId=" + usePlayerId +
-                  ", sessionId=" + sessionId +
-              "}";
+                "id=" + id +
+                ", createTime=" + createTime +
+                ", endTime=" + endTime +
+                ", jobId=" + jobId +
+                ", useTime=" + useTime +
+                ", usePlayerId=" + usePlayerId +
+                ", sessionId=" + sessionId +
+                ", scheduleNumber=" + scheduleNumber +
+                '}';
     }
 }

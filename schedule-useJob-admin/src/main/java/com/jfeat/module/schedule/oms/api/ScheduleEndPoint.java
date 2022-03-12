@@ -22,13 +22,13 @@ public class ScheduleEndPoint {
     @Resource
     private QueryScheduleRecordDao queryScheduleRecordDao;
 
-    @BusinessLog(name = "ScheduleRecord", value = "定时任务记录")
+    @BusinessLog(name = "ScheduleRecord", value = "查看今日定时任务记录")
     @GetMapping
     public Tip queryScheduleRecord() {
         return SuccessTip.create(queryScheduleRecordDao.queryTodayRecord());
     }
 
-    @BusinessLog(name = "ScheduleRecord", value = "定时任务记录")
+    @BusinessLog(name = "ScheduleRecord", value = "查看全部定时任务记录")
     @GetMapping("/allScheduleRecord")
     public Tip queryAllScheduleRecord() {
         return SuccessTip.create(queryScheduleRecordDao.findScheduleRecordPage(null,new ScheduleRecordRecord(),null,null,null,null,null));
@@ -37,14 +37,9 @@ public class ScheduleEndPoint {
     @BusinessLog(name = "ScheduleRecord", value = "定时任务记录")
     @GetMapping("/recordScheduleRecord")
     public Tip recordScheduleRecord() {
-        scheduleRecordService.recordThisRecord("autoGet",null);
+        var s = scheduleRecordService.recordThisRecord("autoGet",null);
+        scheduleRecordService.recordThisEndTime(s);
         return SuccessTip.create();
     }
 
-    @BusinessLog(name = "ScheduleRecord", value = "定时任务记录")
-    @GetMapping("/endRecord")
-    public Tip recordScheduleEndTime() {
-        scheduleRecordService.recordThisEndTime("autoGet");
-        return SuccessTip.create();
-    }
 }

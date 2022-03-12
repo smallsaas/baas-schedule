@@ -1,5 +1,6 @@
 package com.jfeat.module.schedule.oms.services.domain.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.jfeat.module.oms.util.number.SnowFlake;
 import com.jfeat.module.schedule.oms.services.domain.dao.QueryScheduleJobRecordDao;
 import com.jfeat.module.schedule.oms.services.domain.dao.QueryScheduleRecordDao;
 import com.jfeat.module.schedule.oms.services.domain.service.ScheduleRecordService;
@@ -36,21 +37,25 @@ public class ScheduleRecordServiceImpl extends CRUDScheduleRecordServiceImpl imp
     }
 
     @Override
-    public void recordThisRecord(String name,Long sessionId) {
+    public String recordThisRecord(String name,Long sessionId) {
         var scheduleJob = queryScheduleJobRecordDao.selectOne(new LambdaQueryWrapper<ScheduleJobRecord>().eq(ScheduleJobRecord::getJobName,name));
         ScheduleRecord scheduleRecord = new ScheduleRecord();
         scheduleRecord.setCreateTime(LocalDateTime.now()).setJobId(scheduleJob.getId());
         if(sessionId!=null){
             scheduleRecord.setSessionId(sessionId);
         }
+        var snowFlake = new SnowFlake(0,0);
+        scheduleRecord.setScheduleNumber(snowFlake.generateIdNumber("",4));
         scheduleRecord.setUseTime(System.currentTimeMillis());
         this.createMaster(scheduleRecord);
+        //返回唯一标识
+        return scheduleRecord.getScheduleNumber();
     }
 
     @Override
-    public void recordThisEndTime(String name) {
-        var scheduleJob = queryScheduleJobRecordDao.selectOne(new LambdaQueryWrapper<ScheduleJobRecord>().eq(ScheduleJobRecord::getJobName,name));
-        var schedule = queryScheduleRecordDao.queryLastRecord(scheduleJob.getId());
+    public void recordThisEndTime(String number) {
+//        var scheduleJob = queryScheduleJobRecordDao.selectOne(new LambdaQueryWrapper<ScheduleJobRecord>().eq(ScheduleJobRecord::getJobName,name));
+        var schedule = queryScheduleRecordDao.selectOne(new LambdaQueryWrapper<ScheduleRecord>().eq(ScheduleRecord::getScheduleNumber,number));
         schedule.setEndTime(LocalDateTime.now());
         var time = java.time.Duration.between(schedule.getCreateTime() , schedule.getEndTime()).toMinutes();
         System.out.println(schedule.getUseTime() +"      "+ time);

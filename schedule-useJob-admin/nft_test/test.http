@@ -4,11 +4,8 @@
 ### 开启定时任务记录
 GET {{endpoint}}/api/crud/schedule/recordScheduleRecord
 
-###结束定时任务
-GET {{endpoint}}/api/crud/schedule/endRecord
-
 ###获取定时任务当天记录
 GET {{endpoint}}/api/crud/schedule
 
-###
+###获取所有定时任务记录
 GET {{endpoint}}/api/crud/schedule/allScheduleRecord
