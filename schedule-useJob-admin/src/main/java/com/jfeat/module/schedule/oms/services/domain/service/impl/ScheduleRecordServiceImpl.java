@@ -47,6 +47,7 @@ public class ScheduleRecordServiceImpl extends CRUDScheduleRecordServiceImpl imp
         var snowFlake = new SnowFlake(0,0);
         scheduleRecord.setScheduleNumber(snowFlake.generateIdNumber("",4));
         scheduleRecord.setUseTime(System.currentTimeMillis());
+        scheduleRecord.setJobName(name);
         this.createMaster(scheduleRecord);
         //返回唯一标识
         return scheduleRecord.getScheduleNumber();

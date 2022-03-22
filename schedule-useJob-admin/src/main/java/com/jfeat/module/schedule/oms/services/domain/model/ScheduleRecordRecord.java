@@ -9,5 +9,4 @@ import lombok.Data;
 @Data
 public class ScheduleRecordRecord extends ScheduleRecord {
 
-    private String jobName;
     }

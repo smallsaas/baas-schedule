@@ -67,6 +67,8 @@ public class ScheduleRecord extends Model<ScheduleRecord> {
      */
     private String scheduleNumber;
 
+    private String jobName;
+
     
     public Long getId() {
         return id;
@@ -122,6 +124,15 @@ public class ScheduleRecord extends Model<ScheduleRecord> {
           return this;
       }
 
+    public String getJobName() {
+        return jobName;
+    }
+
+    public ScheduleRecord setJobName(String jobName) {
+        this.jobName = jobName;
+        return this;
+    }
+
     public String getScheduleNumber() {
         return scheduleNumber;
     }
@@ -154,6 +165,8 @@ public class ScheduleRecord extends Model<ScheduleRecord> {
 
       public static final String SCHEDULE_NUMBER = "schedule_number";
 
+      public static final String JOB_NAME = "job_name";
+
       @Override
     protected Serializable pkVal() {
           return this.id;
@@ -170,6 +183,7 @@ public class ScheduleRecord extends Model<ScheduleRecord> {
                 ", usePlayerId=" + usePlayerId +
                 ", sessionId=" + sessionId +
                 ", scheduleNumber=" + scheduleNumber +
+                ", jobName=" + jobName +
                 '}';
     }
 }
