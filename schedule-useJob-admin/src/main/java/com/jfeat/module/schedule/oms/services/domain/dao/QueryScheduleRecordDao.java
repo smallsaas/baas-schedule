@@ -40,8 +40,7 @@ public interface QueryScheduleRecordDao extends QueryMasterDao<ScheduleRecord> {
     @Select("SELECT * from t_schedule_record where t_schedule_record.job_id = #{jobId} order by create_time DESC limit 1")
     ScheduleRecord queryLastRecord(@Param("jobId") Long jobId);
 
-    @Select("SELECT t_schedule_record.*,t_schedule_job_record.job_name AS jobName FROM t_schedule_record  \n" +
-            "            LEFT JOIN t_schedule_job_record ON t_schedule_record.job_id = t_schedule_job_record.id \n" +
+    @Select("SELECT  t_schedule_record.id, t_schedule_record.create_time AS createTime, t_schedule_record.end_time AS endTime, t_schedule_record.job_id AS jobId, IF(t_schedule_record.end_time,t_schedule_record.use_time,0) AS useTime, t_schedule_record.use_player_id AS usePlayerId, t_schedule_record.job_name AS jobName,t_schedule_record.session_id AS sessionId,t_schedule_record.schedule_number AS scheduleNumber FROM t_schedule_record  \n" +
             "            where DATE(create_time) = Date(NOW()) order BY create_time DESC")
     List<ScheduleRecordRecord> queryTodayRecord();
 }
