@@ -4,8 +4,11 @@ package com.jfeat.module.schedule.oms.api;
 import com.jfeat.crud.base.annotation.BusinessLog;
 import com.jfeat.crud.base.tips.SuccessTip;
 import com.jfeat.crud.base.tips.Tip;
+import com.jfeat.module.schedule.oms.services.domain.dao.QueryScheduleJobRecordDao;
 import com.jfeat.module.schedule.oms.services.domain.dao.QueryScheduleRecordDao;
+import com.jfeat.module.schedule.oms.services.domain.model.ScheduleJobRecordRecord;
 import com.jfeat.module.schedule.oms.services.domain.model.ScheduleRecordRecord;
+import com.jfeat.module.schedule.oms.services.domain.service.ScheduleJobRecordService;
 import com.jfeat.module.schedule.oms.services.domain.service.ScheduleRecordService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +24,8 @@ public class ScheduleEndPoint {
     private ScheduleRecordService scheduleRecordService;
     @Resource
     private QueryScheduleRecordDao queryScheduleRecordDao;
+    @Resource
+    private ScheduleJobRecordService scheduleJobRecordService;
 
     @BusinessLog(name = "ScheduleRecord", value = "查看今日定时任务记录")
     @GetMapping
@@ -40,6 +45,12 @@ public class ScheduleEndPoint {
         var s = scheduleRecordService.recordThisRecord("autoGet",null);
 //        scheduleRecordService.recordThisEndTime(s);
         return SuccessTip.create();
+    }
+
+    @BusinessLog(name = "ScheduleRecord", value = "查看所有定时任务和今天执行情况")
+    @GetMapping("/allJobAndRecord")
+    public Tip queryJobAndRecord() {
+        return SuccessTip.create(scheduleJobRecordService.queryAllJobAndRecord());
     }
 
 }

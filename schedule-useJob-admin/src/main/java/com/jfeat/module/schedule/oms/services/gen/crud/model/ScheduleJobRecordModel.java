@@ -5,6 +5,8 @@ package com.jfeat.module.schedule.oms.services.gen.crud.model;
 
 
 import com.jfeat.module.schedule.oms.services.gen.persistence.model.ScheduleJobRecord;
+import lombok.Builder;
+import lombok.Data;
 
 
 /**
@@ -12,5 +14,7 @@ import com.jfeat.module.schedule.oms.services.gen.persistence.model.ScheduleJobR
  *  * slaves.size() : 0
  *  * modelpack : $modelpack
  */
+@Data
+@Builder
 public class ScheduleJobRecordModel extends ScheduleJobRecord {
 }
