@@ -1,28 +1,29 @@
 package com.jfeat.module.schedule.oms.services.event;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.jfeat.module.schedule.oms.services.domain.dao.QueryScheduleRecordDao;
 import com.jfeat.module.schedule.oms.services.domain.service.ScheduleRecordService;
+import com.jfeat.module.schedule.oms.services.gen.persistence.model.ScheduleRecord;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.time.LocalDate;
 
 @Component
 public class MyScheduled {
     @Resource
     ScheduleRecordService scheduleRecordService;
-//    @Value("${toggle.task-enable}")
-//    private Boolean taskEnable;
-//    @Resource
-//    private TaskEnableConfig taskEnableConfig;
+    @Resource
+    QueryScheduleRecordDao queryScheduleRecordDao;
 
-//    @Scheduled(cron = "*/10 * * * * ?")
-//    public void updateAllPlayerLevel() {
-//        for (int i=0;i<10000;i++) {
-//            var s = scheduleRecordService.recordThisRecord(Thread.currentThread().getStackTrace()[1].getMethodName(), null);
-//            System.out.println(i+"------------");
-//            scheduleRecordService.recordThisEndTime(s);
-//        }
-//    }
+    @Scheduled(cron = "0 0 0 ? * 5")
+    public void deleteScheduleRecord() {
+        var list = queryScheduleRecordDao.selectList(new LambdaQueryWrapper<ScheduleRecord>().lt(ScheduleRecord::getCreateTime, LocalDate.now().minusDays(7)));
+        for (ScheduleRecord scheduleRecord:list) {
+            scheduleRecordService.deleteMaster(scheduleRecord.getId());
+        }
+    }
 
 //    @Scheduled(cron = "0 0 0 * * ?")
 //    public void batchUpdateTuplesGroupSize() {

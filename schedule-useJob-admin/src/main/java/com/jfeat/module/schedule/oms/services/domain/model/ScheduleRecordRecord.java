@@ -1,7 +1,6 @@
 package com.jfeat.module.schedule.oms.services.domain.model;
 
 import com.jfeat.module.schedule.oms.services.gen.persistence.model.ScheduleRecord;
-import lombok.Builder;
 import lombok.Data;
 
 /**
