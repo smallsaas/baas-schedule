@@ -15,5 +15,5 @@ import java.util.List;
 @Data
 public class ScheduleJobRecordRecord extends ScheduleJobRecord {
 
-    private List<ScheduleRecord> scheduleRecord;
+    private ScheduleRecord scheduleRecord;
     }

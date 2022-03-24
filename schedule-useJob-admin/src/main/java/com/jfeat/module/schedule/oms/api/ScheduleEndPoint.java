@@ -2,6 +2,8 @@ package com.jfeat.module.schedule.oms.api;
 
 
 import com.jfeat.crud.base.annotation.BusinessLog;
+import com.jfeat.crud.base.exception.BusinessCode;
+import com.jfeat.crud.base.exception.BusinessException;
 import com.jfeat.crud.base.tips.SuccessTip;
 import com.jfeat.crud.base.tips.Tip;
 import com.jfeat.module.schedule.oms.services.domain.dao.QueryScheduleJobRecordDao;
@@ -12,6 +14,7 @@ import com.jfeat.module.schedule.oms.services.domain.service.ScheduleJobRecordSe
 import com.jfeat.module.schedule.oms.services.domain.service.ScheduleRecordService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -52,5 +55,4 @@ public class ScheduleEndPoint {
     public Tip queryJobAndRecord() {
         return SuccessTip.create(scheduleJobRecordService.queryAllJobAndRecord());
     }
-
 }

@@ -47,6 +47,8 @@ public class ScheduleJobRecord extends Model<ScheduleJobRecord> {
      */
       private String cron;
       private Integer deleteFlag;
+      private String duplicateTask;
+      private Integer seq;
 
     
     public Long getId() {
@@ -103,6 +105,22 @@ public class ScheduleJobRecord extends Model<ScheduleJobRecord> {
         return this;
     }
 
+    public String getDuplicateTask() {
+        return duplicateTask;
+    }
+
+    public void setDuplicateTask(String duplicateTask) {
+        this.duplicateTask = duplicateTask;
+    }
+
+    public Integer getSeq() {
+        return seq;
+    }
+
+    public void setSeq(Integer seq) {
+        this.seq = seq;
+    }
+
     public static final String ID = "id";
 
       public static final String JOB_NAME = "job_name";
@@ -114,6 +132,10 @@ public class ScheduleJobRecord extends Model<ScheduleJobRecord> {
       public static final String CRON = "cron";
 
       public static final String DELETE_FLAG = "delete_flag";
+
+      public static final String DUPLICATE_TASK = "duplicate_task";
+
+      public static final String SEQ = "seq";
 
       @Override
     protected Serializable pkVal() {
@@ -129,6 +151,8 @@ public class ScheduleJobRecord extends Model<ScheduleJobRecord> {
                 ", jobClass='" + jobClass + '\'' +
                 ", cron='" + cron + '\'' +
                 ", deleteFlag=" + deleteFlag +
+                ", duplicateTask='" + duplicateTask + '\'' +
+                ", seq=" + seq +
                 '}';
     }
 }

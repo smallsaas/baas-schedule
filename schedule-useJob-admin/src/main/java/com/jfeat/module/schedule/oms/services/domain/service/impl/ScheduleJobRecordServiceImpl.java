@@ -44,10 +44,16 @@ public class ScheduleJobRecordServiceImpl extends CRUDScheduleJobRecordServiceIm
         List<ScheduleJobRecordRecord> scheduleJobRecordList = new ArrayList<>();
         JobList.forEach(
                 jobRecord ->{
-                    ScheduleJobRecordRecord scheduleJobRecordRecord = new ScheduleJobRecordRecord();
-                    scheduleJobRecordRecord.setScheduleRecord(queryScheduleRecordDao.selectList(new LambdaQueryWrapper<ScheduleRecord>().eq(ScheduleRecord::getJobId,jobRecord.getId()).like(ScheduleRecord::getCreateTime, LocalDate.now())));
-                    scheduleJobRecordRecord.setJobName(jobRecord.getJobName()).setJobClass(jobRecord.getJobClass()).setJobGroupName(jobRecord.getJobGroupName());
-                    scheduleJobRecordList.add(scheduleJobRecordRecord);
+                    for(int i=1;i<=jobRecord.getSeq();i++) {
+                           var scheduleRecord= queryScheduleRecordDao.selectOne(new LambdaQueryWrapper<ScheduleRecord>().eq(ScheduleRecord::getJobId, jobRecord.getId()).like(ScheduleRecord::getCreateTime, LocalDate.now())
+                                   .eq(ScheduleRecord::getSessionId,i).last("order by create_time DESC limit 1"));
+                          ScheduleJobRecordRecord scheduleJobRecordRecord = new ScheduleJobRecordRecord();
+                            scheduleJobRecordRecord.setScheduleRecord(scheduleRecord);
+                            scheduleJobRecordRecord.setJobName(jobRecord.getJobName()).setJobClass(jobRecord.getJobClass()).setJobGroupName(jobRecord.getJobGroupName())
+                                    .setDuplicateTask(jobRecord.getJobGroupName()+jobRecord.getDuplicateTask()+i);
+                            scheduleJobRecordList.add(scheduleJobRecordRecord);
+                    }
+
                 }
         );
         return scheduleJobRecordList;

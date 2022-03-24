@@ -10,11 +10,13 @@
         <result column="job_class" property="jobClass" />
         <result column="cron" property="cron" />
         <result column="delete_flag" property="deleteFlag" />
+        <result column="duplicate_task" property="duplicateTask" />
+        <result column="seq" property="seq" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, job_name, job_group_name, job_class, cron,delete_flag
+        id, job_name, job_group_name, job_class, cron,delete_flag,duplicate_task,seq
     </sql>
 
 </mapper>
