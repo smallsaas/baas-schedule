@@ -46,7 +46,7 @@ public class ScheduleEndPoint {
     @GetMapping("/recordScheduleRecord")
     public Tip recordScheduleRecord() {
         var s = scheduleRecordService.recordThisRecord("autoGet",null);
-//        scheduleRecordService.recordThisEndTime(s);
+        scheduleRecordService.recordThisEndTime(s);
         return SuccessTip.create();
     }
 

@@ -49,8 +49,8 @@ public class ScheduleJobRecordServiceImpl extends CRUDScheduleJobRecordServiceIm
                                    .eq(ScheduleRecord::getSessionId,i).last("order by create_time DESC limit 1"));
                           ScheduleJobRecordRecord scheduleJobRecordRecord = new ScheduleJobRecordRecord();
                             scheduleJobRecordRecord.setScheduleRecord(scheduleRecord);
-                            scheduleJobRecordRecord.setJobName(jobRecord.getJobName()).setJobClass(jobRecord.getJobClass()).setJobGroupName(jobRecord.getJobGroupName())
-                                    .setDuplicateTask(jobRecord.getJobGroupName()+jobRecord.getDuplicateTask()+i);
+                            scheduleJobRecordRecord.setJobName(jobRecord.getJobName()).setJobClass(jobRecord.getJobClass()).setJobGroupName(jobRecord.getJobGroupName()).setSeq(i);
+                            scheduleJobRecordRecord.setDuplicateTask(jobRecord.getJobGroupName()+jobRecord.getDuplicateTask()+i);
                             scheduleJobRecordList.add(scheduleJobRecordRecord);
                     }
 

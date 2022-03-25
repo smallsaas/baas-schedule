@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
 
+import static cn.hutool.core.lang.Console.log;
+
 /**
  * <p>
  *  服务实现类
@@ -39,6 +41,11 @@ public class ScheduleRecordServiceImpl extends CRUDScheduleRecordServiceImpl imp
     @Override
     public String recordThisRecord(String name,Long sessionId) {
         var scheduleJob = queryScheduleJobRecordDao.selectOne(new LambdaQueryWrapper<ScheduleJobRecord>().eq(ScheduleJobRecord::getJobName,name));
+        if(sessionId!=null) {
+            log("定时任务[" + scheduleJob.getJobGroupName() + sessionId+ "]      ： ============定时任务 开始===================");
+        }else{
+            log("定时任务[" + scheduleJob.getJobGroupName() + "]      ： ============定时任务 开始===================");
+        }
         ScheduleRecord scheduleRecord = new ScheduleRecord();
         scheduleRecord.setCreateTime(LocalDateTime.now()).setJobId(scheduleJob.getId());
         if(sessionId!=null){
@@ -63,5 +70,11 @@ public class ScheduleRecordServiceImpl extends CRUDScheduleRecordServiceImpl imp
         var ms = System.currentTimeMillis() - schedule.getUseTime();
         schedule.setUseTime(time*1000 +ms);
         this.updateMaster(schedule,false);
+        var jobRecord = queryScheduleJobRecordDao.selectOne(new LambdaQueryWrapper<ScheduleJobRecord>().eq(ScheduleJobRecord::getId,schedule.getJobId()));
+        if(schedule.getSessionId()!=null) {
+            log("定时任务[" + jobRecord.getJobGroupName() + schedule.getSessionId()+ "]      ： ============定时任务 结束===================");
+        }else{
+            log("定时任务[" + jobRecord.getJobGroupName() + "]      ： ============定时任务 结束===================");
+        }
     }
 }
