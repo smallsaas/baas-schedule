@@ -1,6 +1,6 @@
 @endpoint=http://localhost:8080
 @local=http://localhost:8080
-@admin = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjAsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDgxNzQ0NjAsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0ODQzMzY2MH0.vHLQLTzUMNKXvOsFRiIABPLGgwdL5mYDVguf5tkIf3K0jYelh18kU6S3zotmoBkIJjsvaO1vqAmU8fvg3lu-0g
+@admin = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDg0MzE4OTQsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0ODY5MTA5NH0.e6iAmvMy_PX43pRCpczxrFiCCg-TGGCNG26qYoTQmEQESMJlNqq9q0zuO4SryGGkg2q7bc5ig9DwlGpjuDwbHQ
 
 
 ### 开启定时任务记录
@@ -17,5 +17,9 @@ GEt {{endpoint}}/api/crud/schedule/allJobAndRecord
 Authorization: {{admin}}
 
 ###
-GET {{endpoint}}/api/crud/oms/manager/managers/view/schedule?sessionId=1&type=wispUp
+GET {{endpoint}}/api/crud/oms/manager/managers/view/schedule?sessionId=2&_t=1648177629983&id=id&type=match
+Authorization: {{admin}}
+
+###
+POST {{endpoint}}/api/crud/oms/marketingSession/marketingSessions/execute/4
 Authorization: {{admin}}

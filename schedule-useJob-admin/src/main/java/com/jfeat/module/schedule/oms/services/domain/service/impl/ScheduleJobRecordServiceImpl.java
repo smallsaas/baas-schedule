@@ -48,6 +48,17 @@ public class ScheduleJobRecordServiceImpl extends CRUDScheduleJobRecordServiceIm
                            var scheduleRecord= queryScheduleRecordDao.selectOne(new LambdaQueryWrapper<ScheduleRecord>().eq(ScheduleRecord::getJobId, jobRecord.getId()).like(ScheduleRecord::getCreateTime, LocalDate.now())
                                    .eq(ScheduleRecord::getSessionId,i).last("order by create_time DESC limit 1"));
                           ScheduleJobRecordRecord scheduleJobRecordRecord = new ScheduleJobRecordRecord();
+                          if (scheduleRecord!=null) {
+                              if (scheduleRecord.getCreateTime() != null) {
+                                  if (scheduleRecord.getEndTime() != null) {
+                                      scheduleJobRecordRecord.setStatus("success");
+                                  } else {
+                                      scheduleJobRecordRecord.setStatus("executing");
+                                  }
+                              }
+                          }else{
+                              scheduleJobRecordRecord.setStatus("notrun");
+                          }
                             scheduleJobRecordRecord.setScheduleRecord(scheduleRecord);
                             scheduleJobRecordRecord.setJobName(jobRecord.getJobName()).setJobClass(jobRecord.getJobClass()).setJobGroupName(jobRecord.getJobGroupName()).setSeq(i);
                             scheduleJobRecordRecord.setDuplicateTask(jobRecord.getJobGroupName()+jobRecord.getDuplicateTask()+i);

@@ -16,4 +16,5 @@ import java.util.List;
 public class ScheduleJobRecordRecord extends ScheduleJobRecord {
 
     private ScheduleRecord scheduleRecord;
+    private String status;
     }
