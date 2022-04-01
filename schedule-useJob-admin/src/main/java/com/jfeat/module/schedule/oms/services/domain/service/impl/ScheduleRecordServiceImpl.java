@@ -1,5 +1,7 @@
 package com.jfeat.module.schedule.oms.services.domain.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.jfeat.crud.base.exception.BusinessCode;
+import com.jfeat.crud.base.exception.BusinessException;
 import com.jfeat.module.oms.util.number.SnowFlake;
 import com.jfeat.module.schedule.oms.services.domain.dao.QueryScheduleJobRecordDao;
 import com.jfeat.module.schedule.oms.services.domain.dao.QueryScheduleRecordDao;
@@ -7,6 +9,7 @@ import com.jfeat.module.schedule.oms.services.domain.service.ScheduleRecordServi
 import com.jfeat.module.schedule.oms.services.gen.crud.service.impl.CRUDScheduleRecordServiceImpl;
 import com.jfeat.module.schedule.oms.services.gen.persistence.model.ScheduleJobRecord;
 import com.jfeat.module.schedule.oms.services.gen.persistence.model.ScheduleRecord;
+import net.bytebuddy.asm.Advice;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +44,18 @@ public class ScheduleRecordServiceImpl extends CRUDScheduleRecordServiceImpl imp
     @Override
     public String recordThisRecord(String name,Long sessionId) {
         var scheduleJob = queryScheduleJobRecordDao.selectOne(new LambdaQueryWrapper<ScheduleJobRecord>().eq(ScheduleJobRecord::getJobName,name));
+        if(sessionId!=null) {
+            var record = queryScheduleRecordDao.selectList(new LambdaQueryWrapper<ScheduleRecord>().eq(ScheduleRecord::getJobName, name).like(ScheduleRecord::getEndTime, LocalDateTime.now().toLocalDate())
+                            .eq(ScheduleRecord::getSessionId,sessionId));
+            if (record.size()!=0) {
+                throw new BusinessException(BusinessCode.BadRequest,"今日运行此任务，无需再运行");
+            }
+        }else{
+            var record = queryScheduleRecordDao.selectOne(new LambdaQueryWrapper<ScheduleRecord>().eq(ScheduleRecord::getJobName, name).like(ScheduleRecord::getEndTime, LocalDateTime.now()));
+            if (record != null) {
+                throw new BusinessException(BusinessCode.BadRequest,"今日运行此任务，无需再运行");
+            }
+        }
         if(sessionId!=null) {
             log("定时任务[" + scheduleJob.getJobGroupName() + sessionId+ "]      ： ============定时任务 开始===================");
         }else{

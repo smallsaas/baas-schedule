@@ -12,10 +12,7 @@ import com.jfeat.module.schedule.oms.services.domain.model.ScheduleJobRecordReco
 import com.jfeat.module.schedule.oms.services.domain.model.ScheduleRecordRecord;
 import com.jfeat.module.schedule.oms.services.domain.service.ScheduleJobRecordService;
 import com.jfeat.module.schedule.oms.services.domain.service.ScheduleRecordService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -44,8 +41,8 @@ public class ScheduleEndPoint {
 
     @BusinessLog(name = "ScheduleRecord", value = "定时任务记录")
     @GetMapping("/recordScheduleRecord")
-    public Tip recordScheduleRecord() {
-        var s = scheduleRecordService.recordThisRecord("autoGet",null);
+    public Tip recordScheduleRecord(@RequestParam(name = "name", required = true) String name,@RequestParam(name = "sessionId", required = true) Long sessionId) {
+        var s = scheduleRecordService.recordThisRecord(name,sessionId);
         scheduleRecordService.recordThisEndTime(s);
         return SuccessTip.create();
     }
