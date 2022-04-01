@@ -17,15 +17,13 @@
 ```
 INSERT INTO `t_schedule_job_record`(`job_name`, `job_group_name`, `duplicate_task`, `seq`) VALUES ('test_name', 'notes',  0, '描述', 1);
 ```
->参数描述
->
->>job_name 定时任务名   如 match
->>
->>job_group_name 定时任务中文描述   如 匹配任务
-> >
->>duplicate_task 定时任务执行场景   如 场次
-> >
->>seq 定时任务一天执行次数 默认1 如 8 
+| 参数名           |参数描述|例子|
+|---------------|-----|-----|
+| job_name      |定时任务名|match|
+| job_group_name |定时任务中文描述|匹配任务|
+| duplicate_task |定时任务执行场景|场次|
+| seq           |定时任务一天执行次数|8|
+
 
 
 #### 业务层中定时任务代码
@@ -49,6 +47,19 @@ var taskNumber = scheduleRecordService.recordThisRecord("#{jobName}", #{sessionI
 // 任务完成后记录时间
 scheduleRecordService.recordThisEndTime(taskNumber);
 ```
-
+>例子
+```
+public void automaticReceipt(Long sessionId) {
+        //定时任务开始前加入记录
+        var taskNumber = scheduleRecordService.recordThisRecord("autoGet",sessionId);
+        new LambdaQueryChainWrapper<>(wispOrderMapper)
+                .eq(WispOrder::getMarketingSessionId, sessionId)
+                .eq(WispOrder::getStatus, WispOrderStatus.PAID)
+                .list()
+                .forEach(wispOrder -> orderReceived(wispOrder.getId(), wispOrder.getSellerPlayId()));
+        //定时任务结束时加入结束记录
+        scheduleRecordService.recordThisEndTime(taskNumber);
+    }
+```
 
 
