@@ -1,11 +1,40 @@
-使用方法
+## 使用方法
 
-1、先新增你要记录的定时任务信息在t_schedule_job_record表里
 
-2、在定时任务头部加上
+#### pom.xml 
+```xml
+<dependencies>
+  <dependency>
+      <groupId>com.jfeat</groupId>
+      <artifactId>schedule-useJob-admin</artifactId>
+      <version>1.0.0</version>
+  </dependency>
+</ependencies>
+```
 
-var s = scheduleRecordService.recordThisRecord("此处填写定时任务job",sessionId);
+#### 在业务层初始化定时任务信息 `t_schedule_job_record`
+> 业务层任务定义例子
+```
+INSERT 
+```
 
-定时任务末尾加入
 
-scheduleRecordService.recordThisEndTime(s);
+#### 业务层中定时任务代码
+> 定时任务末尾加入
+> 
+> 此处填写定时任务job
+
+```java 
+var taskNumber = scheduleRecordService.recordThisRecord("", sessionId));
+
+
+// 业务层定时任务代码
+// end 业务层定时任务代码
+
+
+// 任务完成后记录时间
+scheduleRecordService.recordThisEndTime(taskNumber);
+```
+
+
+
