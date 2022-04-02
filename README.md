@@ -13,7 +13,7 @@
 | `#5`   | 手动执行超时未执行任务      |  手工执行定时任务  |
 
 
-## 使用方法
+## 后端使用方法
 
 
 #### pom.xml
@@ -76,4 +76,30 @@ public void automaticReceipt(Long sessionId) {
         scheduleRecordService.recordThisEndTime(taskNumber);
     }
 ```
+
+#前端对接使用方法
+####获取所有定时任务且返回当天最新记录内容
+GEt   /api/crud/schedule/allJobAndRecord
+
+| 前端对接字段        | 描述     |
+|---------------|--------|
+| duplicateTask | 定时任务描述 |
+| jobName  | 任务名    |
+ |createTime| 创建时间   |
+|endTime | 结束时间   |
+|useTime | 运行时间   |
+
+###获取定时任务当天记录
+GET {{endpoint}}/api/crud/schedule
+
+###获取所有定时任务记录
+GET {{endpoint}}/api/crud/schedule/allScheduleRecord
+
+| 前端对接字段     | 描述    |
+|------------|-------|
+| createTime | 创建时间  |
+| endTime    | 结束时间  |
+| useTime    | 运行时间  |
+| sessionId  | 子任务序号 |
+| jobName    | 任务名   |
 
