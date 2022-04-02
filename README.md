@@ -32,12 +32,12 @@
 ```
 INSERT INTO `t_schedule_job_record`(`job_name`, `job_group_name`, `duplicate_task`, `seq`) VALUES ('wispUp', '精灵升级',  0, '场次', 1);
 ```
-| 参数名           | 参数描述       |例子|
-|---------------|------------|-----|
-| job_name      | 定时任务名(英文)  |match|
-| job_group_name | 定时任务中文描述   |匹配任务|
-| duplicate_task | 定时任务执行场景   |场次|
-| seq           | 定时任务一天执行次数 |8|
+| 参数名           | 参数描述            |例子|
+|---------------|-----------------|-----|
+| job_name      | 定时任务名(英文)       |match|
+| job_group_name | 定时任务中文描述        |匹配任务|
+| duplicate_task | 定时任务执行场景 （选填）   |场次|
+| seq           | 定时任务一天执行次数 （选填） |8|
 
 
 #### 业务层中定时任务代码
