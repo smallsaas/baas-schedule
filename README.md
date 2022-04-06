@@ -47,10 +47,11 @@ INSERT INTO `t_schedule_job_record`(`job_name`, `job_group_name`, `duplicate_tas
 >
 > 其中`#{sessionId}`为 `t_schedule_job_record`里的seq，如默认1的可以填null，不为1则填入记录号 如运行场次7 则是填写 7
 >
+> `#{allowReset}` 值为boolean 类型，为true时定义此定时任务可重复执行，为false时不可重复执行（一天一次）
 >  定时任务末尾加入
 
 ```java 
-var taskNumber = scheduleRecordService.recordThisRecord("#{jobName}", #{sessionId)});
+var taskNumber = scheduleRecordService.recordThisRecord("#{jobName}", #{sessionId)}, #{allowReset});
 
 
 // 业务层定时任务代码
@@ -66,7 +67,7 @@ scheduleRecordService.recordThisEndTime(taskNumber);
 ```
 public void automaticReceipt(Long sessionId) {
         //定时任务开始前加入记录
-        var taskNumber = scheduleRecordService.recordThisRecord("autoGet",sessionId);
+        var taskNumber = scheduleRecordService.recordThisRecord("autoGet",sessionId,false);
         new LambdaQueryChainWrapper<>(wispOrderMapper)
                 .eq(WispOrder::getMarketingSessionId, sessionId)
                 .eq(WispOrder::getStatus, WispOrderStatus.PAID)

@@ -42,7 +42,7 @@ public class ScheduleEndPoint {
     @BusinessLog(name = "ScheduleRecord", value = "定时任务记录")
     @GetMapping("/recordScheduleRecord")
     public Tip recordScheduleRecord(@RequestParam(name = "name", required = true) String name,@RequestParam(name = "sessionId", required = true) Long sessionId) {
-        var s = scheduleRecordService.recordThisRecord(name,sessionId);
+        var s = scheduleRecordService.recordThisRecord(name,sessionId,true);
         scheduleRecordService.recordThisEndTime(s);
         return SuccessTip.create();
     }

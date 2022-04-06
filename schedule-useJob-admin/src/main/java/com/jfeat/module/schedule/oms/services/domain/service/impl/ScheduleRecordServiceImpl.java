@@ -42,18 +42,20 @@ public class ScheduleRecordServiceImpl extends CRUDScheduleRecordServiceImpl imp
     }
 
     @Override
-    public String recordThisRecord(String name,Long sessionId) {
+    public String recordThisRecord(String name,Long sessionId,boolean allowReset) {
         var scheduleJob = queryScheduleJobRecordDao.selectOne(new LambdaQueryWrapper<ScheduleJobRecord>().eq(ScheduleJobRecord::getJobName,name));
-        if(sessionId!=null) {
-            var record = queryScheduleRecordDao.selectList(new LambdaQueryWrapper<ScheduleRecord>().eq(ScheduleRecord::getJobName, name).like(ScheduleRecord::getEndTime, LocalDateTime.now().toLocalDate())
-                            .eq(ScheduleRecord::getSessionId,sessionId));
-            if (record.size()!=0) {
-                throw new BusinessException(BusinessCode.BadRequest,"今日运行此任务，无需再运行");
-            }
-        }else{
-            var record = queryScheduleRecordDao.selectOne(new LambdaQueryWrapper<ScheduleRecord>().eq(ScheduleRecord::getJobName, name).like(ScheduleRecord::getEndTime, LocalDateTime.now()));
-            if (record != null) {
-                throw new BusinessException(BusinessCode.BadRequest,"今日运行此任务，无需再运行");
+        if(!allowReset) {
+            if (sessionId != null) {
+                var record = queryScheduleRecordDao.selectList(new LambdaQueryWrapper<ScheduleRecord>().eq(ScheduleRecord::getJobName, name).like(ScheduleRecord::getEndTime, LocalDateTime.now().toLocalDate())
+                        .eq(ScheduleRecord::getSessionId, sessionId));
+                if (record.size() != 0) {
+                    throw new BusinessException(BusinessCode.BadRequest, "今日运行此任务，无需再运行");
+                }
+            } else {
+                var record = queryScheduleRecordDao.selectOne(new LambdaQueryWrapper<ScheduleRecord>().eq(ScheduleRecord::getJobName, name).like(ScheduleRecord::getEndTime, LocalDateTime.now()));
+                if (record != null) {
+                    throw new BusinessException(BusinessCode.BadRequest, "今日运行此任务，无需再运行");
+                }
             }
         }
         if(sessionId!=null) {

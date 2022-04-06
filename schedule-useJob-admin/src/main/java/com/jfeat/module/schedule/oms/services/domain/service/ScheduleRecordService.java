@@ -7,7 +7,7 @@ import com.jfeat.module.schedule.oms.services.gen.crud.service.CRUDScheduleRecor
  */
 public interface ScheduleRecordService extends CRUDScheduleRecordService {
 
-    public String recordThisRecord(String name,Long sessionId);
+    public String recordThisRecord(String name,Long sessionId,boolean allowReset);
 
 
     public void recordThisEndTime(String name);
