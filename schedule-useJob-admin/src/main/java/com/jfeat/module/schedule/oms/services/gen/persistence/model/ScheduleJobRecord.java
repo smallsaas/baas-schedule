@@ -49,6 +49,7 @@ public class ScheduleJobRecord extends Model<ScheduleJobRecord> {
       private Integer deleteFlag;
       private String duplicateTask;
       private Integer seq;
+      private Integer allowRepeat;
 
     
     public Long getId() {
@@ -121,6 +122,14 @@ public class ScheduleJobRecord extends Model<ScheduleJobRecord> {
         this.seq = seq;
     }
 
+    public Integer getAllowRepeat() {
+        return allowRepeat;
+    }
+
+    public void setAllowRepeat(Integer allowRepeat) {
+        this.allowRepeat = allowRepeat;
+    }
+
     public static final String ID = "id";
 
       public static final String JOB_NAME = "job_name";
@@ -136,6 +145,8 @@ public class ScheduleJobRecord extends Model<ScheduleJobRecord> {
       public static final String DUPLICATE_TASK = "duplicate_task";
 
       public static final String SEQ = "seq";
+
+      public static final String ALLOW_REPEAT = "allow_repeat";
 
       @Override
     protected Serializable pkVal() {
@@ -153,6 +164,7 @@ public class ScheduleJobRecord extends Model<ScheduleJobRecord> {
                 ", deleteFlag=" + deleteFlag +
                 ", duplicateTask='" + duplicateTask + '\'' +
                 ", seq=" + seq +
+                ", allowRepeat=" + allowRepeat +
                 '}';
     }
 }

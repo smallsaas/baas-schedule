@@ -42,9 +42,12 @@ public class ScheduleRecordServiceImpl extends CRUDScheduleRecordServiceImpl imp
     }
 
     @Override
-    public String recordThisRecord(String name,Long sessionId,boolean allowReset) {
+    public String recordThisRecord(String name,Long sessionId) {
         var scheduleJob = queryScheduleJobRecordDao.selectOne(new LambdaQueryWrapper<ScheduleJobRecord>().eq(ScheduleJobRecord::getJobName,name));
-        if(!allowReset) {
+        if(scheduleJob == null){
+            throw new BusinessException(BusinessCode.BadRequest,"任务出错，请检查定时任务信息");
+        }
+        if(scheduleJob.getAllowRepeat() == 0) {
             if (sessionId != null) {
                 var record = queryScheduleRecordDao.selectList(new LambdaQueryWrapper<ScheduleRecord>().eq(ScheduleRecord::getJobName, name).like(ScheduleRecord::getEndTime, LocalDateTime.now().toLocalDate())
                         .eq(ScheduleRecord::getSessionId, sessionId));

@@ -15,14 +15,15 @@
 #### 在业务层初始化定时任务信息 `t_schedule_job_record`
 > 业务层任务定义例子
 ```
-INSERT INTO `t_schedule_job_record`(`job_name`, `job_group_name`, `duplicate_task`, `seq`) VALUES ('test_name', 'notes',  0, '描述', 1);
+INSERT INTO `t_schedule_job_record`(`job_name`, `job_group_name`, `duplicate_task`, `seq`, `allow_repeat`) VALUES ('test_name', 'notes',  0, '描述', 1, 1);
 ```
-| 参数名           | 参数描述            |例子|
-|---------------|-----------------|-----|
-| job_name      | 定时任务名(英文)       |match|
+| 参数名            | 参数描述            |例子|
+|----------------|-----------------|-----|
+| job_name       | 定时任务名(英文)       |match|
 | job_group_name | 定时任务中文描述        |匹配任务|
 | duplicate_task | 定时任务执行场景 （选填）   |场次|
-| seq           | 定时任务一天执行次数 （选填） |8|
+| seq            | 定时任务一天执行次数 （选填） |8|
+| allow_repeat   |定时任务是否可重复执行 默认0|1|
 
 
 
