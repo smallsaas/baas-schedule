@@ -104,3 +104,24 @@ GET {{endpoint}}/api/crud/schedule/allScheduleRecord
 | sessionId  | 子任务序号 |
 | jobName    | 任务名   |
 
+
+#前端对接测试用例
+
+```
+@endpoint=http://localhost:8080
+
+@admin = Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6IjEiLCJ1c2VySWQiOiIxIiwidGVuYW50T3JnSWQiOjEsImFjY291bnQiOiJhZG1pbiIsInVzZXJUeXBlIjoxMDAsImRldlVzZXJUeXBlIjowLCJiVXNlclR5cGUiOiJTWVNURU0iLCJpYXQiOjE2NDg0MzE4OTQsImp0aSI6IjEiLCJzdWIiOiJhZG1pbiIsImV4cCI6MTY0ODY5MTA5NH0.e6iAmvMy_PX43pRCpczxrFiCCg-TGGCNG26qYoTQmEQESMJlNqq9q0zuO4SryGGkg2q7bc5ig9DwlGpjuDwbHQ
+
+### 开启定时任务记录name和session必须传入
+GET {{endpoint}}/api/crud/schedule/recordScheduleRecord?name= &sessionId=
+
+###获取定时任务当天记录
+GET {{endpoint}}/api/crud/schedule
+
+###获取所有定时任务记录
+GET {{endpoint}}/api/crud/schedule/allScheduleRecord
+
+###获取所有定时任务且返回当天最新记录内容
+GEt {{endpoint}}/api/crud/schedule/allJobAndRecord
+Authorization: {{admin}}
+```
