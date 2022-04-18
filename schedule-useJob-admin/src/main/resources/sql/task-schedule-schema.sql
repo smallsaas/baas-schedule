@@ -14,7 +14,6 @@
  Date: 18/04/2022 14:42:55
 */
 
-SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -31,7 +30,7 @@ CREATE TABLE `t_schedule_record`  (
   `session_id` bigint(20) NULL DEFAULT NULL COMMENT '场次id',
   `schedule_number` bigint(20) NULL DEFAULT NULL COMMENT '定时任务记录编号',
   `job_name` varchar(32) NOT NULL COMMENT '定时任务名',
-  PRIMARY KEY (`id`) USING BTREE,
+  PRIMARY KEY (`id`),
   UNIQUE (`schedule_number`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 302457 ROW_FORMAT = Dynamic;
 
@@ -46,7 +45,7 @@ CREATE TABLE `t_schedule_job_record`  (
   `duplicate_task` varchar(20) NULL DEFAULT NULL COMMENT '子任务名字',
   `seq` int(4) NULL DEFAULT 1 COMMENT '子任务数',
   `allow_repeat` tinyint(4) NULL DEFAULT 0 COMMENT '是否可重复执行项，1可重复执行',
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 9 ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
