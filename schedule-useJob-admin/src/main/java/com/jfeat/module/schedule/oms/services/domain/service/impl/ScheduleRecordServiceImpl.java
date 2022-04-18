@@ -10,6 +10,8 @@ import com.jfeat.module.schedule.oms.services.gen.crud.service.impl.CRUDSchedule
 import com.jfeat.module.schedule.oms.services.gen.persistence.model.ScheduleJobRecord;
 import com.jfeat.module.schedule.oms.services.gen.persistence.model.ScheduleRecord;
 import net.bytebuddy.asm.Advice;
+
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -71,11 +73,24 @@ public class ScheduleRecordServiceImpl extends CRUDScheduleRecordServiceImpl imp
         if(sessionId!=null){
             scheduleRecord.setSessionId(sessionId);
         }
+
         var snowFlake = new SnowFlake(0,0);
-        scheduleRecord.setScheduleNumber(snowFlake.generateIdNumber("",4));
-        scheduleRecord.setUseTime(System.currentTimeMillis());
-        scheduleRecord.setJobName(name);
-        this.createMaster(scheduleRecord);
+   
+        boolean done = false;
+        int tryTimes = 2;
+        while(tryTimes-- > 0 && !done){
+            try{
+                scheduleRecord.setScheduleNumber(snowFlake.generateIdNumber("",4));
+                scheduleRecord.setUseTime(System.currentTimeMillis());
+                scheduleRecord.setJobName(name);
+                this.createMaster(scheduleRecord);
+                done=true;
+            }catch(DuplicateKeyException e){
+                logger.warn("snowFlake generate duplicate number");
+            }
+        }
+        
+    
         //返回唯一标识
         return scheduleRecord.getScheduleNumber();
     }
